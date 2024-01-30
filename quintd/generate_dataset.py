@@ -11,10 +11,11 @@ import logging
 import coloredlogs
 import datetime
 
-import openweather.openweather as openweather
-import gsmarena.gsmarena as gsmarena
-import ice_hockey.ice_hockey as ice_hockey
-
+import api.openweather.openweather as openweather
+import api.gsmarena.gsmarena as gsmarena
+import api.ice_hockey.ice_hockey as ice_hockey
+import api.owid.main as owid
+import api.wikidata.wikidata as wikidata
 
 coloredlogs.install(level="INFO", fmt="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -35,8 +36,8 @@ if __name__ == "__main__":
         "ice_hockey": ice_hockey,
         "gsmarena": gsmarena,
         "openweather": openweather,
-        # "owid" : owid,
-        # "wikidata" : wikidata
+        "owid": owid,
+        "wikidata": wikidata,
     }
 
     parser = argparse.ArgumentParser()
@@ -104,9 +105,13 @@ if __name__ == "__main__":
         seeds = {
             "ice_hockey": 42,
             "gsmarena": 42,
+            "openweather": 0,
+            "owid": 0,
+            "wikidata": 42,
         }
         ice_hockey_dev_date = "27/11/2023"
         ice_hockey_test_date = "29/11/2023"
+        examples = 100
 
     if args.examples > 100:
         logger.warning(
@@ -116,7 +121,7 @@ if __name__ == "__main__":
             exit()
 
     if args.out_dir is None:
-        out_dir = os.path.join(dir_path, os.pardir, f"quintd-custom-{args.seed}")
+        out_dir = os.path.join(dir_path, f"quintd-custom-{args.seed}")
 
     if args.ice_hockey_date is None:
         # date is not specified explicitly, so we generate a random date between Oct. 7, 2022 to Apr. 14, 2023 (NHL season)

@@ -1,0 +1,7 @@
+bs4==0.0.1
+openai==1.6.0
+owid-catalog==0.3.8
+scipy==1.11.4
+transformers==4.35.2
+tzdata==2023.4
+wikidatasets==0.3.0
