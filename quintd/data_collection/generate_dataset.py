@@ -9,8 +9,12 @@ import yaml
 import os
 import logging
 import coloredlogs
+import datetime
+
 import openweather.openweather as openweather
 import gsmarena.gsmarena as gsmarena
+import ice_hockey.ice_hockey as ice_hockey
+
 
 coloredlogs.install(level="INFO", fmt="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -28,9 +32,9 @@ def get_api_key(api_keys, api_name):
 
 if __name__ == "__main__":
     domains = {
-        # "ice_hockey" : ice_hockey,
+        "ice_hockey": ice_hockey,
         "gsmarena": gsmarena,
-        # "openweather" : openweather,
+        "openweather": openweather,
         # "owid" : owid,
         # "wikidata" : wikidata
     }
@@ -75,6 +79,12 @@ if __name__ == "__main__":
         help="Attempt downloading products directly from GSMArena. This may run into limitations of the website. If not specified, the products will be selected from the pre-downloaded list of products.",
     )
     parser.add_argument(
+        "--ice_hockey_date",
+        type=str,
+        default=None,
+        help="Matches for ice_hockey are downloaded for a specific date. The date will be selected from a range based on the random seed. However, you can also specify the date for the `dev` set manually. The format in the format DD/MM/YYYY. The test set will be generated for the next day after the dev set.",
+    )
+    parser.add_argument(
         "--replicate",
         action="store_true",
         default=False,
@@ -87,6 +97,17 @@ if __name__ == "__main__":
         open(os.path.join(dir_path, "api_keys.yaml"), "r"), Loader=yaml.FullLoader
     )
 
+    if args.replicate:
+        raise NotImplementedError(
+            "Replication of the Quintd-1 dataset is not implemented yet."
+        )
+        seeds = {
+            "ice_hockey": 42,
+            "gsmarena": 42,
+        }
+        ice_hockey_dev_date = "27/11/2023"
+        ice_hockey_test_date = "29/11/2023"
+
     if args.examples > 100:
         logger.warning(
             "Generating more than 100 examples per domain is not recommended as some APIs may impose fees. Please make sure you are accomodated with the API policies. Are you sure you want to continue? (y/n)"
@@ -97,8 +118,26 @@ if __name__ == "__main__":
     if args.out_dir is None:
         out_dir = os.path.join(dir_path, os.pardir, f"quintd-custom-{args.seed}")
 
-    flags = {
+    if args.ice_hockey_date is None:
+        # date is not specified explicitly, so we generate a random date between Oct. 7, 2022 to Apr. 14, 2023 (NHL season)
+        random.seed(args.seed)
+        ice_hockey_dev_date = (
+            datetime.date(2022, 10, 7) + datetime.timedelta(days=random.randint(0, 189))
+        ).strftime("%d/%m/%Y")
+    else:
+        # date is specified explicitly
+        ice_hockey_dev_date = args.ice_hockey_date
+
+    # test_date is one day after dev_date (to have enough matches for the split)
+    ice_hockey_test_date = (
+        datetime.datetime.strptime(ice_hockey_dev_date, "%d/%m/%Y").date()
+        + datetime.timedelta(days=1)
+    ).strftime("%d/%m/%Y")
+
+    extra_args = {
         "gsmarena_full": args.gsmarena_full,
+        "ice_hockey_dev_date": ice_hockey_dev_date,
+        "ice_hockey_test_date": ice_hockey_test_date,
     }
 
     for domain in args.domains:
@@ -114,6 +153,6 @@ if __name__ == "__main__":
             seed=args.seed,
             n_examples=args.examples,
             out_dir=openweather_out_dir,
-            flags=flags,
+            extra_args=extra_args,
             verbose=args.verbose,
         )

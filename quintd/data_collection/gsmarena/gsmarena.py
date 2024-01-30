@@ -22,10 +22,10 @@ def generate_dataset_full(seed, n_examples, dir_path, out_dir):
     )
 
 
-def generate_dataset(api_key, seed, n_examples, out_dir, flags, verbose=False):
+def generate_dataset(api_key, seed, n_examples, out_dir, extra_args, verbose=False):
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    if flags["gsmarena_full"]:
+    if extra_args["gsmarena_full"]:
         logger.warning(
             "Downloading products directly from GSMArena. This may take a while. If the API returns 'Too Many Requests' error, the script will retry later: please give it enough time to finish."
         )

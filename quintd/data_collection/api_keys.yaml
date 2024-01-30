@@ -1,3 +1,7 @@
-# TODO: add your openweather API key
+# TODO: add your OpenWeather API key
 # https://home.openweathermap.org/api_keys
 OPENWEATHER_API_KEY: ""
+
+# TODO add your RapidAPI API key
+# https://rapidapi.com/fluis.lacasse/api/icehockeyapi/
+ICE_HOCKEY_API_KEY: ""

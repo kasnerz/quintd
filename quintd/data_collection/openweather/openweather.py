@@ -11,6 +11,7 @@ import random
 import logging
 import coloredlogs
 from tqdm import tqdm
+
 coloredlogs.install(level="INFO", fmt="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
@@ -38,10 +39,14 @@ def get_weather_from_api(location, api_key):
 
 
 def save_cities(seed, n_examples, out_dir, cities_path):
-    cities_all_file = os.path.join(out_dir, f"geonames-all-cities-with-a-population-1000.csv")
+    cities_all_file = os.path.join(
+        out_dir, f"geonames-all-cities-with-a-population-1000.csv"
+    )
 
     if not os.path.exists(cities_all_file):
-        logger.info("Downloading the list of cities... This may take a while. The file will be saved as geonames-all-cities-with-a-population-1000.csv")
+        logger.info(
+            "Downloading the list of cities... This may take a while. The file will be saved as geonames-all-cities-with-a-population-1000.csv"
+        )
         url = "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/geonames-all-cities-with-a-population-1000/exports/csv?lang=en&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B"
 
         response = requests.get(url)
@@ -51,10 +56,10 @@ def save_cities(seed, n_examples, out_dir, cities_path):
     df = pd.read_csv(cities_all_file, sep=";")
 
     random.seed(seed)
-    indices = random.sample(range(len(df)), n_examples*2)
+    indices = random.sample(range(len(df)), n_examples * 2)
     split_indices = {
         "dev": indices[:n_examples],
-        "test": indices[n_examples:n_examples*2],
+        "test": indices[n_examples : n_examples * 2],
     }
     cities_for_split = {
         "dev": [],
@@ -74,7 +79,7 @@ def save_cities(seed, n_examples, out_dir, cities_path):
         json.dump(cities_for_split, f, indent=4)
 
 
-def generate_dataset(api_key, seed, n_examples, out_dir, flags, verbose=False):
+def generate_dataset(api_key, seed, n_examples, out_dir, extra_args, verbose=False):
     all_forecasts = {"forecasts": []}
     cities_path = os.path.join(out_dir, f"cities.json")
 
@@ -100,4 +105,3 @@ def generate_dataset(api_key, seed, n_examples, out_dir, flags, verbose=False):
         out_filename = os.path.join(out_dir, f"{split}.json")
         with open(out_filename, "w") as f:
             json.dump(all_forecasts, f, indent=4)
-
