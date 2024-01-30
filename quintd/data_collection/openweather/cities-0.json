@@ -1,0 +1,1506 @@
+{
+    "dev": [
+        {
+            "Name": "Tepuxtepec",
+            "Country": "Mexico",
+            "Coordinates": "19.99135, -100.22566"
+        },
+        {
+            "Name": "Anori",
+            "Country": "Brazil",
+            "Coordinates": "-3.77278, -61.64417"
+        },
+        {
+            "Name": "Ses Salines",
+            "Country": "Spain",
+            "Coordinates": "39.33831, 3.05274"
+        },
+        {
+            "Name": "Ohangaron",
+            "Country": "Uzbekistan",
+            "Coordinates": "40.90639, 69.63833"
+        },
+        {
+            "Name": "Jonesville",
+            "Country": "United States",
+            "Coordinates": "36.2393, -80.84452"
+        },
+        {
+            "Name": "Paso del Correo",
+            "Country": "Mexico",
+            "Coordinates": "20.31619, -97.27216"
+        },
+        {
+            "Name": "Karfamoria",
+            "Country": "Guinea",
+            "Coordinates": "10.41667, -9.26667"
+        },
+        {
+            "Name": "Tweed Heads West",
+            "Country": "Australia",
+            "Coordinates": "-28.18736, 153.52278"
+        },
+        {
+            "Name": "Taxi\u00e1rches",
+            "Country": "Greece",
+            "Coordinates": "39.57565, 21.89245"
+        },
+        {
+            "Name": "Pickworth",
+            "Country": "United Kingdom",
+            "Coordinates": "52.71311, -0.53318"
+        },
+        {
+            "Name": "Aksu",
+            "Country": "Turkey",
+            "Coordinates": "37.79889, 31.07111"
+        },
+        {
+            "Name": "Sa\u1e29\u0101b",
+            "Country": "Jordan",
+            "Coordinates": "31.87032, 36.00479"
+        },
+        {
+            "Name": "Aguisan",
+            "Country": "Philippines",
+            "Coordinates": "10.1603, 122.8615"
+        },
+        {
+            "Name": "Cornu Luncii",
+            "Country": "Romania",
+            "Coordinates": "47.46667, 26.15"
+        },
+        {
+            "Name": "Mountain Brook",
+            "Country": "United States",
+            "Coordinates": "33.50094, -86.75221"
+        },
+        {
+            "Name": "San Lorenzo",
+            "Country": "Mexico",
+            "Coordinates": "19.52771, -102.10934"
+        },
+        {
+            "Name": "El Descanso",
+            "Country": "Peru",
+            "Coordinates": "-14.53333, -71.30556"
+        },
+        {
+            "Name": "G\u00e9ri",
+            "Country": "Cyprus",
+            "Coordinates": "35.1056, 33.41977"
+        },
+        {
+            "Name": "Amahusu",
+            "Country": "Indonesia",
+            "Coordinates": "-3.72525, 128.1471"
+        },
+        {
+            "Name": "Montefano",
+            "Country": "Italy",
+            "Coordinates": "43.40982, 13.4369"
+        },
+        {
+            "Name": "Bintawan",
+            "Country": "Philippines",
+            "Coordinates": "16.57588, 121.18764"
+        },
+        {
+            "Name": "San Bartolo Tutotepec",
+            "Country": "Mexico",
+            "Coordinates": "20.39841, -98.2008"
+        },
+        {
+            "Name": "Shuidong",
+            "Country": "China",
+            "Coordinates": "21.5134, 111.00184"
+        },
+        {
+            "Name": "Ljungbyholm",
+            "Country": "Sweden",
+            "Coordinates": "56.63333, 16.16667"
+        },
+        {
+            "Name": "Cozmeni",
+            "Country": "Romania",
+            "Coordinates": "46.22678, 25.94209"
+        },
+        {
+            "Name": "Bayan Uula Sumu",
+            "Country": "Mongolia",
+            "Coordinates": "45.16667, 101.4"
+        },
+        {
+            "Name": "Jedovnice",
+            "Country": "Czech Republic",
+            "Coordinates": "49.34453, 16.75595"
+        },
+        {
+            "Name": "Las \u00c1nimas",
+            "Country": "Mexico",
+            "Coordinates": "20.39709, -101.79964"
+        },
+        {
+            "Name": "Escopete",
+            "Country": "Spain",
+            "Coordinates": "40.41324, -3.0046"
+        },
+        {
+            "Name": "Nagymaros",
+            "Country": "Hungary",
+            "Coordinates": "47.7928, 18.95984"
+        },
+        {
+            "Name": "Xirop\u00f3tamos",
+            "Country": "Greece",
+            "Coordinates": "41.19206, 24.10385"
+        },
+        {
+            "Name": "Point Clare",
+            "Country": "Australia",
+            "Coordinates": "-33.44378, 151.32732"
+        },
+        {
+            "Name": "Sagopshi",
+            "Country": "Russian Federation",
+            "Coordinates": "43.48515, 44.59063"
+        },
+        {
+            "Name": "Saint-Romain-de-Benet",
+            "Country": "France",
+            "Coordinates": "45.6916, -0.84706"
+        },
+        {
+            "Name": "Friedersdorf",
+            "Country": "Germany",
+            "Coordinates": "51.02416, 14.56246"
+        },
+        {
+            "Name": "Waalwijk",
+            "Country": "Netherlands",
+            "Coordinates": "51.6825, 5.07083"
+        },
+        {
+            "Name": "Baincthun",
+            "Country": "France",
+            "Coordinates": "50.70994, 1.68075"
+        },
+        {
+            "Name": "Fox Chase",
+            "Country": "United States",
+            "Coordinates": "40.39557, -75.96216"
+        },
+        {
+            "Name": "Otwock",
+            "Country": "Poland",
+            "Coordinates": "52.10577, 21.26129"
+        },
+        {
+            "Name": "Almer\u00eda",
+            "Country": "Spain",
+            "Coordinates": "36.83814, -2.45974"
+        },
+        {
+            "Name": "Garches",
+            "Country": "France",
+            "Coordinates": "48.84226, 2.18232"
+        },
+        {
+            "Name": "Verplanck",
+            "Country": "United States",
+            "Coordinates": "41.25287, -73.95986"
+        },
+        {
+            "Name": "Cornillon-Confoux",
+            "Country": "France",
+            "Coordinates": "43.56267, 5.07162"
+        },
+        {
+            "Name": "Fazeley",
+            "Country": "United Kingdom",
+            "Coordinates": "52.61443, -1.6985"
+        },
+        {
+            "Name": "Lamotte-Beuvron",
+            "Country": "France",
+            "Coordinates": "47.602, 2.02837"
+        },
+        {
+            "Name": "Borov\u00e1 Lada",
+            "Country": "Czech Republic",
+            "Coordinates": "48.98983, 13.65986"
+        },
+        {
+            "Name": "Imbituva",
+            "Country": "Brazil",
+            "Coordinates": "-25.23, -50.60444"
+        },
+        {
+            "Name": "Zapod",
+            "Country": "Albania",
+            "Coordinates": "42.05056, 20.5525"
+        },
+        {
+            "Name": "Slatina",
+            "Country": "Romania",
+            "Coordinates": "47.45, 26.01667"
+        },
+        {
+            "Name": "Nak\u0142o nad Noteci\u0105",
+            "Country": "Poland",
+            "Coordinates": "53.14214, 17.60181"
+        },
+        {
+            "Name": "Piqueras",
+            "Country": "Spain",
+            "Coordinates": "40.66367, -1.72202"
+        },
+        {
+            "Name": "Val-David",
+            "Country": "Canada",
+            "Coordinates": "46.03338, -74.21592"
+        },
+        {
+            "Name": "Saint-Vincent-de-Mercuze",
+            "Country": "France",
+            "Coordinates": "45.37215, 5.95424"
+        },
+        {
+            "Name": "Barani",
+            "Country": "Burkina Faso",
+            "Coordinates": "13.1691, -3.8899"
+        },
+        {
+            "Name": "Torre-Pacheco",
+            "Country": "Spain",
+            "Coordinates": "37.74293, -0.95396"
+        },
+        {
+            "Name": "Hatzendorf",
+            "Country": "Austria",
+            "Coordinates": "46.97686, 16.00107"
+        },
+        {
+            "Name": "Santiago Yancuictlalpan",
+            "Country": "Mexico",
+            "Coordinates": "20.06092, -97.47223"
+        },
+        {
+            "Name": "Pedro Santana",
+            "Country": "Dominican Republic",
+            "Coordinates": "19.10515, -71.69498"
+        },
+        {
+            "Name": "San Luis Acatl\u00e1n",
+            "Country": "Mexico",
+            "Coordinates": "16.80901, -98.73331"
+        },
+        {
+            "Name": "Fargues-Saint-Hilaire",
+            "Country": "France",
+            "Coordinates": "44.82383, -0.44495"
+        },
+        {
+            "Name": "Capit\u00f3lio",
+            "Country": "Brazil",
+            "Coordinates": "-20.61528, -46.05"
+        },
+        {
+            "Name": "Minsk",
+            "Country": "Belarus",
+            "Coordinates": "53.9, 27.56667"
+        },
+        {
+            "Name": "C\u0103l\u0103ra\u015fi",
+            "Country": "Romania",
+            "Coordinates": "47.60625, 27.26001"
+        },
+        {
+            "Name": "Las Margaritas",
+            "Country": "Mexico",
+            "Coordinates": "18.25501, -96.28421"
+        },
+        {
+            "Name": "Loh\u0101ru",
+            "Country": "India",
+            "Coordinates": "28.42993, 75.80779"
+        },
+        {
+            "Name": "Caraballeda",
+            "Country": "Venezuela, Bolivarian Rep. of",
+            "Coordinates": "10.61216, -66.85192"
+        },
+        {
+            "Name": "Krempe",
+            "Country": "Germany",
+            "Coordinates": "53.83694, 9.48831"
+        },
+        {
+            "Name": "Osek",
+            "Country": "Czech Republic",
+            "Coordinates": "49.77594, 13.5906"
+        },
+        {
+            "Name": "Muzaffarpur",
+            "Country": "India",
+            "Coordinates": "26.12259, 85.39055"
+        },
+        {
+            "Name": "Meixing",
+            "Country": "China",
+            "Coordinates": "30.99907, 102.36019"
+        },
+        {
+            "Name": "Brunn an der Wild",
+            "Country": "Austria",
+            "Coordinates": "48.69425, 15.52008"
+        },
+        {
+            "Name": "Frunzi",
+            "Country": "Romania",
+            "Coordinates": "46.9, 24.33333"
+        },
+        {
+            "Name": "Hohoe",
+            "Country": "Ghana",
+            "Coordinates": "7.15181, 0.47362"
+        },
+        {
+            "Name": "Forest Park",
+            "Country": "United States",
+            "Coordinates": "39.29034, -84.50411"
+        },
+        {
+            "Name": "Kisaran",
+            "Country": "Indonesia",
+            "Coordinates": "2.9845, 99.6158"
+        },
+        {
+            "Name": "Shar\u0101n",
+            "Country": "Syrian Arab Republic",
+            "Coordinates": "36.62336, 36.93659"
+        },
+        {
+            "Name": "Sopeira",
+            "Country": "Spain",
+            "Coordinates": "42.31615, 0.74632"
+        },
+        {
+            "Name": "Almondbank",
+            "Country": "United Kingdom",
+            "Coordinates": "56.41729, -3.51733"
+        },
+        {
+            "Name": "\u0141apczyca",
+            "Country": "Poland",
+            "Coordinates": "49.95994, 20.38445"
+        },
+        {
+            "Name": "Mezinovskiy",
+            "Country": "Russian Federation",
+            "Coordinates": "55.5042, 40.35932"
+        },
+        {
+            "Name": "Ocilla",
+            "Country": "United States",
+            "Coordinates": "31.59447, -83.2513"
+        },
+        {
+            "Name": "Kap Choeng",
+            "Country": "Thailand",
+            "Coordinates": "14.47486, 103.59439"
+        },
+        {
+            "Name": "Cengio Alto",
+            "Country": "Italy",
+            "Coordinates": "44.38443, 8.19758"
+        },
+        {
+            "Name": "Lankwitz",
+            "Country": "Germany",
+            "Coordinates": "52.43623, 13.3459"
+        },
+        {
+            "Name": "Skidel\u2019",
+            "Country": "Belarus",
+            "Coordinates": "53.5904, 24.2478"
+        },
+        {
+            "Name": "Gundaroo",
+            "Country": "Australia",
+            "Coordinates": "-35.03333, 149.25"
+        },
+        {
+            "Name": "Burtr\u00e4sk",
+            "Country": "Sweden",
+            "Coordinates": "64.51667, 20.65"
+        },
+        {
+            "Name": "Birchington-on-Sea",
+            "Country": "United Kingdom",
+            "Coordinates": "51.37575, 1.3048"
+        },
+        {
+            "Name": "Riaill\u00e9",
+            "Country": "France",
+            "Coordinates": "47.51917, -1.29598"
+        },
+        {
+            "Name": "Broughton",
+            "Country": "United Kingdom",
+            "Coordinates": "53.16303, -2.99309"
+        },
+        {
+            "Name": "Arida\u00eda",
+            "Country": "Greece",
+            "Coordinates": "40.97306, 22.05639"
+        },
+        {
+            "Name": "Sherwood",
+            "Country": "United States",
+            "Coordinates": "34.81509, -92.22432"
+        },
+        {
+            "Name": "Saint James",
+            "Country": "United States",
+            "Coordinates": "37.99726, -91.61432"
+        },
+        {
+            "Name": "R\u00edo Chico",
+            "Country": "Venezuela, Bolivarian Rep. of",
+            "Coordinates": "10.31899, -65.97751"
+        },
+        {
+            "Name": "Semeljci",
+            "Country": "Croatia",
+            "Coordinates": "45.36056, 18.54361"
+        },
+        {
+            "Name": "Betz",
+            "Country": "France",
+            "Coordinates": "49.15558, 2.95584"
+        },
+        {
+            "Name": "Santa Martha",
+            "Country": "Mexico",
+            "Coordinates": "22.34278, -98.70639"
+        },
+        {
+            "Name": "Pyh\u00e4joki",
+            "Country": "Finland",
+            "Coordinates": "64.46667, 24.23333"
+        },
+        {
+            "Name": "T\u00e2rgu Trotu\u015f",
+            "Country": "Romania",
+            "Coordinates": "46.26667, 26.66667"
+        },
+        {
+            "Name": "Nakskov",
+            "Country": "Denmark",
+            "Coordinates": "54.83038, 11.13567"
+        }
+    ],
+    "test": [
+        {
+            "Name": "Del Gallego",
+            "Country": "Philippines",
+            "Coordinates": "13.9223, 122.5954"
+        },
+        {
+            "Name": "Milford",
+            "Country": "United States",
+            "Coordinates": "41.32232, -74.80239"
+        },
+        {
+            "Name": "Wanmao",
+            "Country": "China",
+            "Coordinates": "34.8, 103.2"
+        },
+        {
+            "Name": "Theale",
+            "Country": "United Kingdom",
+            "Coordinates": "51.43694, -1.077"
+        },
+        {
+            "Name": "Wurzbach",
+            "Country": "Germany",
+            "Coordinates": "50.46357, 11.53779"
+        },
+        {
+            "Name": "Srostki",
+            "Country": "Russian Federation",
+            "Coordinates": "52.4209, 85.69923"
+        },
+        {
+            "Name": "Steenvoorde",
+            "Country": "France",
+            "Coordinates": "50.81046, 2.58244"
+        },
+        {
+            "Name": "Grab\u0103\u021b",
+            "Country": "Romania",
+            "Coordinates": "45.87861, 20.74238"
+        },
+        {
+            "Name": "Ventana",
+            "Country": "Mexico",
+            "Coordinates": "25.32695, -103.47772"
+        },
+        {
+            "Name": "Busalla",
+            "Country": "Italy",
+            "Coordinates": "44.5706, 8.94545"
+        },
+        {
+            "Name": "Gherm\u0103ne\u0219ti",
+            "Country": "Romania",
+            "Coordinates": "44.68829, 26.14962"
+        },
+        {
+            "Name": "Yangjiaping",
+            "Country": "China",
+            "Coordinates": "29.50512, 106.50135"
+        },
+        {
+            "Name": "Choiseul",
+            "Country": "Saint Lucia",
+            "Coordinates": "13.77273, -61.04931"
+        },
+        {
+            "Name": "Preah Netr Preah",
+            "Country": "Cambodia",
+            "Coordinates": "13.62371, 103.18212"
+        },
+        {
+            "Name": "Selva",
+            "Country": "Italy",
+            "Coordinates": "46.55472, 11.76038"
+        },
+        {
+            "Name": "Hof",
+            "Country": "Germany",
+            "Coordinates": "50.31297, 11.91261"
+        },
+        {
+            "Name": "San Julian",
+            "Country": "Bolivia",
+            "Coordinates": "-17.80623, -62.89536"
+        },
+        {
+            "Name": "Goulding",
+            "Country": "United States",
+            "Coordinates": "30.44298, -87.22247"
+        },
+        {
+            "Name": "Dobrotu",
+            "Country": "Romania",
+            "Coordinates": "45.20633, 24.65859"
+        },
+        {
+            "Name": "El Copey",
+            "Country": "Colombia",
+            "Coordinates": "10.15031, -73.9614"
+        },
+        {
+            "Name": "Abonnema",
+            "Country": "Nigeria",
+            "Coordinates": "4.73171, 6.77223"
+        },
+        {
+            "Name": "Masegoso",
+            "Country": "Spain",
+            "Coordinates": "38.71833, -2.3161"
+        },
+        {
+            "Name": "Tweed Heads South",
+            "Country": "Australia",
+            "Coordinates": "-28.19517, 153.53964"
+        },
+        {
+            "Name": "Sch\u00f6nfeld",
+            "Country": "Germany",
+            "Coordinates": "51.3, 13.7"
+        },
+        {
+            "Name": "Pirapora",
+            "Country": "Brazil",
+            "Coordinates": "-17.345, -44.94194"
+        },
+        {
+            "Name": "Jatani",
+            "Country": "India",
+            "Coordinates": "20.15975, 85.70742"
+        },
+        {
+            "Name": "Kyrylivka",
+            "Country": "Ukraine",
+            "Coordinates": "46.37179, 35.3701"
+        },
+        {
+            "Name": "Tarusan",
+            "Country": "Philippines",
+            "Coordinates": "8.65461, 117.5104"
+        },
+        {
+            "Name": "Hargesheim",
+            "Country": "Germany",
+            "Coordinates": "49.8623, 7.82881"
+        },
+        {
+            "Name": "Hendrina",
+            "Country": "South Africa",
+            "Coordinates": "-26.15881, 29.71528"
+        },
+        {
+            "Name": "Garh Maharaja",
+            "Country": "Pakistan",
+            "Coordinates": "30.83383, 71.90491"
+        },
+        {
+            "Name": "Sabugal",
+            "Country": "Portugal",
+            "Coordinates": "40.35127, -7.09104"
+        },
+        {
+            "Name": "Orlea",
+            "Country": "Romania",
+            "Coordinates": "43.75, 24.38333"
+        },
+        {
+            "Name": "Sumner",
+            "Country": "United States",
+            "Coordinates": "42.84748, -92.09156"
+        },
+        {
+            "Name": "Aguar\u00f3n",
+            "Country": "Spain",
+            "Coordinates": "41.33901, -1.27055"
+        },
+        {
+            "Name": "Maca",
+            "Country": "Peru",
+            "Coordinates": "-15.64127, -71.76856"
+        },
+        {
+            "Name": "Berg",
+            "Country": "Germany",
+            "Coordinates": "49.81417, 12.14161"
+        },
+        {
+            "Name": "Mosterhamn",
+            "Country": "Norway",
+            "Coordinates": "59.69919, 5.38585"
+        },
+        {
+            "Name": "Lauro",
+            "Country": "Italy",
+            "Coordinates": "40.87972, 14.63013"
+        },
+        {
+            "Name": "Taipas",
+            "Country": "Portugal",
+            "Coordinates": "41.48465, -8.3485"
+        },
+        {
+            "Name": "Inning am Ammersee",
+            "Country": "Germany",
+            "Coordinates": "48.07636, 11.15232"
+        },
+        {
+            "Name": "Clinton",
+            "Country": "United States",
+            "Coordinates": "41.27871, -72.52759"
+        },
+        {
+            "Name": "Saint Albans",
+            "Country": "Australia",
+            "Coordinates": "-37.73333, 144.8"
+        },
+        {
+            "Name": "Rombas",
+            "Country": "France",
+            "Coordinates": "49.24946, 6.09398"
+        },
+        {
+            "Name": "Zamo\u015b\u0107",
+            "Country": "Poland",
+            "Coordinates": "50.72314, 23.25196"
+        },
+        {
+            "Name": "Jonesboro",
+            "Country": "United States",
+            "Coordinates": "33.5215, -84.35381"
+        },
+        {
+            "Name": "Hampton",
+            "Country": "United States",
+            "Coordinates": "39.42288, -76.58469"
+        },
+        {
+            "Name": "Cristuru Secuiesc",
+            "Country": "Romania",
+            "Coordinates": "46.28333, 25.03333"
+        },
+        {
+            "Name": "Bagn\u00e8res-de-Luchon",
+            "Country": "France",
+            "Coordinates": "42.79079, 0.59341"
+        },
+        {
+            "Name": "Niemegk",
+            "Country": "Germany",
+            "Coordinates": "52.07388, 12.68947"
+        },
+        {
+            "Name": "Santa Rita",
+            "Country": "Mexico",
+            "Coordinates": "16.13167, -91.975"
+        },
+        {
+            "Name": "Buttelstedt",
+            "Country": "Germany",
+            "Coordinates": "51.0765, 11.34353"
+        },
+        {
+            "Name": "Brejo",
+            "Country": "Brazil",
+            "Coordinates": "-3.68444, -42.75028"
+        },
+        {
+            "Name": "Tadten",
+            "Country": "Austria",
+            "Coordinates": "47.7642, 16.9865"
+        },
+        {
+            "Name": "Zion",
+            "Country": "United States",
+            "Coordinates": "40.91423, -77.68472"
+        },
+        {
+            "Name": "Warson Woods",
+            "Country": "United States",
+            "Coordinates": "38.60727, -90.38345"
+        },
+        {
+            "Name": "Pescader\u00eda",
+            "Country": "Dominican Republic",
+            "Coordinates": "18.26766, -71.16612"
+        },
+        {
+            "Name": "San Luis",
+            "Country": "Philippines",
+            "Coordinates": "15.0401, 120.7883"
+        },
+        {
+            "Name": "Cabatuan",
+            "Country": "Philippines",
+            "Coordinates": "10.8794, 122.486"
+        },
+        {
+            "Name": "Guijo de Galisteo",
+            "Country": "Spain",
+            "Coordinates": "40.09383, -6.41007"
+        },
+        {
+            "Name": "T\u00eda Juana",
+            "Country": "Venezuela, Bolivarian Rep. of",
+            "Coordinates": "10.25927, -71.36343"
+        },
+        {
+            "Name": "Holt",
+            "Country": "United Kingdom",
+            "Coordinates": "53.06667, -2.88333"
+        },
+        {
+            "Name": "Magaramkent",
+            "Country": "Russian Federation",
+            "Coordinates": "41.61513, 48.34609"
+        },
+        {
+            "Name": "West Springfield",
+            "Country": "United States",
+            "Coordinates": "42.10704, -72.62037"
+        },
+        {
+            "Name": "Home",
+            "Country": "United States",
+            "Coordinates": "47.27482, -122.76375"
+        },
+        {
+            "Name": "Ladik",
+            "Country": "Turkey",
+            "Coordinates": "40.91056, 35.89194"
+        },
+        {
+            "Name": "Boalo",
+            "Country": "Spain",
+            "Coordinates": "40.71603, -3.91656"
+        },
+        {
+            "Name": "Kotel\u2019nikovo",
+            "Country": "Ukraine",
+            "Coordinates": "45.36584, 34.02575"
+        },
+        {
+            "Name": "Glan Peidu",
+            "Country": "Philippines",
+            "Coordinates": "5.855, 125.21861"
+        },
+        {
+            "Name": "Fengqiu Chengguanzhen",
+            "Country": "China",
+            "Coordinates": "35.02917, 114.41306"
+        },
+        {
+            "Name": "Santib\u00e1\u00f1ez del Val",
+            "Country": "Spain",
+            "Coordinates": "41.97354, -3.48142"
+        },
+        {
+            "Name": "Randfontein",
+            "Country": "South Africa",
+            "Coordinates": "-26.1844, 27.70203"
+        },
+        {
+            "Name": "San Alejo",
+            "Country": "El Salvador",
+            "Coordinates": "13.43139, -87.96306"
+        },
+        {
+            "Name": "Likioen",
+            "Country": "Indonesia",
+            "Coordinates": "-10.7484, 123.0446"
+        },
+        {
+            "Name": "Wi\u0144sko",
+            "Country": "Poland",
+            "Coordinates": "51.47032, 16.6139"
+        },
+        {
+            "Name": "Ko\u0144skowola",
+            "Country": "Poland",
+            "Coordinates": "51.40922, 22.05175"
+        },
+        {
+            "Name": "Kastl",
+            "Country": "Germany",
+            "Coordinates": "49.3696, 11.68261"
+        },
+        {
+            "Name": "Oleksandrivka",
+            "Country": "Ukraine",
+            "Coordinates": "46.83786, 32.76344"
+        },
+        {
+            "Name": "Ciocile",
+            "Country": "Romania",
+            "Coordinates": "44.81667, 27.23333"
+        },
+        {
+            "Name": "Sorbo San Basile",
+            "Country": "Italy",
+            "Coordinates": "39.01939, 16.5691"
+        },
+        {
+            "Name": "Seaforth",
+            "Country": "Canada",
+            "Coordinates": "43.55009, -81.39976"
+        },
+        {
+            "Name": "Zaborze",
+            "Country": "Poland",
+            "Coordinates": "50.02175, 19.24067"
+        },
+        {
+            "Name": "Naucelles",
+            "Country": "France",
+            "Coordinates": "44.95898, 2.41884"
+        },
+        {
+            "Name": "Vodstroy",
+            "Country": "Russian Federation",
+            "Coordinates": "48.84165, 44.55793"
+        },
+        {
+            "Name": "Buq\u2018\u0101t\u0101",
+            "Country": "Syrian Arab Republic",
+            "Coordinates": "33.20111, 35.77917"
+        },
+        {
+            "Name": "Forfoleda",
+            "Country": "Spain",
+            "Coordinates": "41.09779, -5.74979"
+        },
+        {
+            "Name": "Caazap\u00e1",
+            "Country": "Paraguay",
+            "Coordinates": "-26.19583, -56.36806"
+        },
+        {
+            "Name": "Trenton",
+            "Country": "United States",
+            "Coordinates": "39.48089, -84.45772"
+        },
+        {
+            "Name": "Ar Rub\u016b\u2018",
+            "Country": "Yemen",
+            "Coordinates": "13.78024, 43.86901"
+        },
+        {
+            "Name": "Orli\u00e9nas",
+            "Country": "France",
+            "Coordinates": "45.65886, 4.71832"
+        },
+        {
+            "Name": "Starosillya",
+            "Country": "Ukraine",
+            "Coordinates": "46.33129, 29.46926"
+        },
+        {
+            "Name": "Kirtorf",
+            "Country": "Germany",
+            "Coordinates": "50.76942, 9.10389"
+        },
+        {
+            "Name": "Vallinfreda",
+            "Country": "Italy",
+            "Coordinates": "42.08485, 12.99595"
+        },
+        {
+            "Name": "Posadas",
+            "Country": "Argentina",
+            "Coordinates": "-27.36708, -55.89608"
+        },
+        {
+            "Name": "O\u017carowice",
+            "Country": "Poland",
+            "Coordinates": "50.46182, 19.04317"
+        },
+        {
+            "Name": "Fuentes Claras",
+            "Country": "Spain",
+            "Coordinates": "40.86375, -1.32266"
+        },
+        {
+            "Name": "Santa Mar\u00eda del Monte",
+            "Country": "Mexico",
+            "Coordinates": "18.54117, -97.1999"
+        },
+        {
+            "Name": "Castelfranco in Miscano",
+            "Country": "Italy",
+            "Coordinates": "41.30072, 15.08607"
+        },
+        {
+            "Name": "San Jos\u00e9 de Agua Azul",
+            "Country": "Mexico",
+            "Coordinates": "20.48662, -100.65587"
+        },
+        {
+            "Name": "Kitamilo",
+            "Country": "Uganda",
+            "Coordinates": "0.22215, 33.20608"
+        },
+        {
+            "Name": "Batorz",
+            "Country": "Poland",
+            "Coordinates": "50.8505, 22.49313"
+        },
+        {
+            "Name": "Grandson",
+            "Country": "Switzerland",
+            "Coordinates": "46.80946, 6.646"
+        },
+        {
+            "Name": "Behror",
+            "Country": "India",
+            "Coordinates": "27.88832, 76.28108"
+        },
+        {
+            "Name": "Trzebielino",
+            "Country": "Poland",
+            "Coordinates": "54.19996, 17.08726"
+        },
+        {
+            "Name": "Olne",
+            "Country": "Belgium",
+            "Coordinates": "50.58994, 5.74662"
+        },
+        {
+            "Name": "Niudaokou",
+            "Country": "China",
+            "Coordinates": "39.78611, 117.25222"
+        },
+        {
+            "Name": "Ch\u00e2teauneuf-de-Galaure",
+            "Country": "France",
+            "Coordinates": "45.22977, 4.95777"
+        },
+        {
+            "Name": "Jh\u0101lrap\u0101tan",
+            "Country": "India",
+            "Coordinates": "24.54205, 76.17242"
+        },
+        {
+            "Name": "Saint Anthony",
+            "Country": "United States",
+            "Coordinates": "45.02052, -93.218"
+        },
+        {
+            "Name": "Korem",
+            "Country": "Ethiopia",
+            "Coordinates": "12.50583, 39.52278"
+        },
+        {
+            "Name": "Dobric",
+            "Country": "Romania",
+            "Coordinates": "47.2469, 24.12777"
+        },
+        {
+            "Name": "SeaTac",
+            "Country": "United States",
+            "Coordinates": "47.44846, -122.29217"
+        },
+        {
+            "Name": "Cigognola",
+            "Country": "Italy",
+            "Coordinates": "45.03276, 9.24486"
+        },
+        {
+            "Name": "Ratten",
+            "Country": "Austria",
+            "Coordinates": "47.48333, 15.71667"
+        },
+        {
+            "Name": "Cachoeiras de Macacu",
+            "Country": "Brazil",
+            "Coordinates": "-22.4625, -42.65306"
+        },
+        {
+            "Name": "Bencheng",
+            "Country": "China",
+            "Coordinates": "39.5, 118.7"
+        },
+        {
+            "Name": "Asturianos",
+            "Country": "Spain",
+            "Coordinates": "42.05201, -6.4894"
+        },
+        {
+            "Name": "Halifax",
+            "Country": "United States",
+            "Coordinates": "41.99121, -70.86199"
+        },
+        {
+            "Name": "Voroshn\u00ebvo",
+            "Country": "Russian Federation",
+            "Coordinates": "51.65278, 36.01722"
+        },
+        {
+            "Name": "Pontianak",
+            "Country": "Indonesia",
+            "Coordinates": "-0.03194, 109.325"
+        },
+        {
+            "Name": "Berndorf bei Salzburg",
+            "Country": "Austria",
+            "Coordinates": "47.99532, 13.06146"
+        },
+        {
+            "Name": "Mets Mant\u2019ash",
+            "Country": "Armenia",
+            "Coordinates": "40.64376, 44.05653"
+        },
+        {
+            "Name": "San Antonio de los R\u00edos",
+            "Country": "Mexico",
+            "Coordinates": "22.16104, -102.47118"
+        },
+        {
+            "Name": "Mangere",
+            "Country": "New Zealand",
+            "Coordinates": "-36.96807, 174.79875"
+        },
+        {
+            "Name": "T\u011b\u0161any",
+            "Country": "Czech Republic",
+            "Coordinates": "49.03956, 16.77003"
+        },
+        {
+            "Name": "Krin\u00eddes",
+            "Country": "Greece",
+            "Coordinates": "41.01396, 24.29647"
+        },
+        {
+            "Name": "Tsubata",
+            "Country": "Japan",
+            "Coordinates": "36.67012, 136.7403"
+        },
+        {
+            "Name": "J\u0101mt\u0101ra",
+            "Country": "India",
+            "Coordinates": "23.963, 86.80285"
+        },
+        {
+            "Name": "Grave",
+            "Country": "Netherlands",
+            "Coordinates": "51.75902, 5.73882"
+        },
+        {
+            "Name": "Soconusco",
+            "Country": "Mexico",
+            "Coordinates": "17.96315, -94.88097"
+        },
+        {
+            "Name": "Lijun",
+            "Country": "China",
+            "Coordinates": "38.18583, 106.12"
+        },
+        {
+            "Name": "Ihosy",
+            "Country": "Madagascar",
+            "Coordinates": "-22.40293, 46.12576"
+        },
+        {
+            "Name": "Guojia",
+            "Country": "China",
+            "Coordinates": "31.29528, 108.48104"
+        },
+        {
+            "Name": "San Rafael",
+            "Country": "Mexico",
+            "Coordinates": "19.20959, -98.75636"
+        },
+        {
+            "Name": "Tapejara",
+            "Country": "Brazil",
+            "Coordinates": "-23.73306, -52.87333"
+        },
+        {
+            "Name": "Seven Corners",
+            "Country": "United States",
+            "Coordinates": "38.87206, -77.15526"
+        },
+        {
+            "Name": "Huetamo de N\u00fa\u00f1ez",
+            "Country": "Mexico",
+            "Coordinates": "18.62926, -100.897"
+        },
+        {
+            "Name": "Sabanilla",
+            "Country": "Costa Rica",
+            "Coordinates": "10.07404, -84.21551"
+        },
+        {
+            "Name": "Lupareve",
+            "Country": "Ukraine",
+            "Coordinates": "46.69167, 31.975"
+        },
+        {
+            "Name": "Lembeke",
+            "Country": "Belgium",
+            "Coordinates": "51.19487, 3.63333"
+        },
+        {
+            "Name": "Erolzheim",
+            "Country": "Germany",
+            "Coordinates": "48.09001, 10.073"
+        },
+        {
+            "Name": "Grindsted",
+            "Country": "Denmark",
+            "Coordinates": "55.75726, 8.9275"
+        },
+        {
+            "Name": "Port Orford",
+            "Country": "United States",
+            "Coordinates": "42.74566, -124.49733"
+        },
+        {
+            "Name": "Aventura",
+            "Country": "United States",
+            "Coordinates": "25.95648, -80.13921"
+        },
+        {
+            "Name": "Al \u1e28\u0101m\u016bl",
+            "Country": "Egypt",
+            "Coordinates": "31.31146, 31.14766"
+        },
+        {
+            "Name": "Santa Rosa",
+            "Country": "Argentina",
+            "Coordinates": "-36.61667, -64.28333"
+        },
+        {
+            "Name": "Weatherly",
+            "Country": "United States",
+            "Coordinates": "40.94175, -75.82964"
+        },
+        {
+            "Name": "Saint David",
+            "Country": "United States",
+            "Coordinates": "31.90425, -110.21424"
+        },
+        {
+            "Name": "Duxford",
+            "Country": "United Kingdom",
+            "Coordinates": "52.09393, 0.15917"
+        },
+        {
+            "Name": "Bakreswar",
+            "Country": "India",
+            "Coordinates": "23.8832, 87.37265"
+        },
+        {
+            "Name": "Litchfield",
+            "Country": "United States",
+            "Coordinates": "39.17533, -89.65426"
+        },
+        {
+            "Name": "Maclear",
+            "Country": "South Africa",
+            "Coordinates": "-31.07104, 28.35183"
+        },
+        {
+            "Name": "Wamba",
+            "Country": "Spain",
+            "Coordinates": "41.67525, -4.91748"
+        },
+        {
+            "Name": "Los Guajes",
+            "Country": "Mexico",
+            "Coordinates": "20.26111, -102.14164"
+        },
+        {
+            "Name": "Zerind",
+            "Country": "Romania",
+            "Coordinates": "46.61667, 21.51667"
+        },
+        {
+            "Name": "Rjukan",
+            "Country": "Norway",
+            "Coordinates": "59.87891, 8.59411"
+        },
+        {
+            "Name": "G\u00f6tzens",
+            "Country": "Austria",
+            "Coordinates": "47.23606, 11.31154"
+        },
+        {
+            "Name": "St\u00f6ckheim",
+            "Country": "Germany",
+            "Coordinates": "52.21055, 10.52216"
+        },
+        {
+            "Name": "Lilieci",
+            "Country": "Romania",
+            "Coordinates": "46.62861, 26.87176"
+        },
+        {
+            "Name": "Novoplatnirovskaya",
+            "Country": "Russian Federation",
+            "Coordinates": "46.1065, 39.4191"
+        },
+        {
+            "Name": "Queniquea",
+            "Country": "Venezuela, Bolivarian Rep. of",
+            "Coordinates": "7.91849, -72.01612"
+        },
+        {
+            "Name": "Sulzfeld",
+            "Country": "Germany",
+            "Coordinates": "50.25972, 10.40525"
+        },
+        {
+            "Name": "Kapchorwa",
+            "Country": "Uganda",
+            "Coordinates": "1.40096, 34.45038"
+        },
+        {
+            "Name": "San Pedro Atocpan",
+            "Country": "Mexico",
+            "Coordinates": "19.2016, -99.04963"
+        },
+        {
+            "Name": "Trenggalek",
+            "Country": "Indonesia",
+            "Coordinates": "-8.0764, 111.70641"
+        },
+        {
+            "Name": "Silvano d'Orba",
+            "Country": "Italy",
+            "Coordinates": "44.6858, 8.67182"
+        },
+        {
+            "Name": "Kumberg",
+            "Country": "Austria",
+            "Coordinates": "47.16422, 15.53261"
+        },
+        {
+            "Name": "Chenshi",
+            "Country": "China",
+            "Coordinates": "29.31446, 105.99265"
+        },
+        {
+            "Name": "La Soledad",
+            "Country": "Panama",
+            "Coordinates": "7.87885, -81.26793"
+        },
+        {
+            "Name": "Xiaonanhai",
+            "Country": "China",
+            "Coordinates": "29.66147, 108.76251"
+        },
+        {
+            "Name": "Librilla",
+            "Country": "Spain",
+            "Coordinates": "37.88642, -1.35557"
+        },
+        {
+            "Name": "Pajares de Adaja",
+            "Country": "Spain",
+            "Coordinates": "40.92398, -4.64048"
+        },
+        {
+            "Name": "Razumnoye",
+            "Country": "Russian Federation",
+            "Coordinates": "50.53439, 36.68462"
+        },
+        {
+            "Name": "Loddin",
+            "Country": "Germany",
+            "Coordinates": "54.02252, 14.00754"
+        },
+        {
+            "Name": "San Isidro",
+            "Country": "Panama",
+            "Coordinates": "8.53368, -82.83086"
+        },
+        {
+            "Name": "Zile",
+            "Country": "Turkey",
+            "Coordinates": "40.30306, 35.88639"
+        },
+        {
+            "Name": "Tolfa",
+            "Country": "Italy",
+            "Coordinates": "42.15023, 11.93216"
+        },
+        {
+            "Name": "Beteta",
+            "Country": "Spain",
+            "Coordinates": "40.57191, -2.07588"
+        },
+        {
+            "Name": "\u00c9cully",
+            "Country": "France",
+            "Coordinates": "45.77437, 4.77758"
+        },
+        {
+            "Name": "S\u00e2nm\u0103rghita",
+            "Country": "Romania",
+            "Coordinates": "47.15649, 23.99461"
+        },
+        {
+            "Name": "Monteprandone",
+            "Country": "Italy",
+            "Coordinates": "42.9205, 13.8391"
+        },
+        {
+            "Name": "Woodvale",
+            "Country": "Australia",
+            "Coordinates": "-31.78928, 115.79676"
+        },
+        {
+            "Name": "Muravlenko",
+            "Country": "Russian Federation",
+            "Coordinates": "63.78977, 74.52301"
+        },
+        {
+            "Name": "K\u0131z\u0131l\u0131rmak",
+            "Country": "Turkey",
+            "Coordinates": "40.34556, 33.98639"
+        },
+        {
+            "Name": "Podgorenskiy",
+            "Country": "Russian Federation",
+            "Coordinates": "50.4, 39.648"
+        },
+        {
+            "Name": "Str\u00f6mma",
+            "Country": "Sweden",
+            "Coordinates": "59.28333, 18.53333"
+        },
+        {
+            "Name": "East Berwick",
+            "Country": "United States",
+            "Coordinates": "41.06203, -76.22243"
+        },
+        {
+            "Name": "Buddus\u00f2",
+            "Country": "Italy",
+            "Coordinates": "40.57723, 9.25839"
+        },
+        {
+            "Name": "D\u00f6hlau",
+            "Country": "Germany",
+            "Coordinates": "50.28333, 11.95"
+        },
+        {
+            "Name": "Wellsville",
+            "Country": "United States",
+            "Coordinates": "40.60284, -80.64896"
+        },
+        {
+            "Name": "Arant\u0101ngi",
+            "Country": "India",
+            "Coordinates": "10.17235, 78.99118"
+        },
+        {
+            "Name": "Bicaz",
+            "Country": "Romania",
+            "Coordinates": "47.46667, 23.03333"
+        },
+        {
+            "Name": "Chetilla",
+            "Country": "Peru",
+            "Coordinates": "-7.15, -78.66667"
+        },
+        {
+            "Name": "Oracabessa",
+            "Country": "Jamaica",
+            "Coordinates": "18.40319, -76.94641"
+        },
+        {
+            "Name": "Colombia",
+            "Country": "Cuba",
+            "Coordinates": "20.98812, -77.42598"
+        },
+        {
+            "Name": "Bulayevo",
+            "Country": "Kazakhstan",
+            "Coordinates": "54.90596, 70.44155"
+        },
+        {
+            "Name": "Dalaas",
+            "Country": "Austria",
+            "Coordinates": "47.12446, 9.99104"
+        },
+        {
+            "Name": "Pluvigner",
+            "Country": "France",
+            "Coordinates": "47.77524, -3.01049"
+        },
+        {
+            "Name": "Oberhof",
+            "Country": "Switzerland",
+            "Coordinates": "47.44874, 8.00273"
+        },
+        {
+            "Name": "Haydock",
+            "Country": "United Kingdom",
+            "Coordinates": "53.46723, -2.68166"
+        }
+    ]
+}
