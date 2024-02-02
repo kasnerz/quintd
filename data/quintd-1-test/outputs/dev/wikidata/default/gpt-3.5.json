@@ -1,0 +1,50 @@
+{
+    "dataset": "wikidata",
+    "model": "gpt-3.5",
+    "setup": {
+        "params": {
+            "max_new_tokens": 512,
+            "repetition_penalty": 1.0,
+            "do_sample": false,
+            "truncation_length": 32768,
+            "auto_max_new_tokens": false,
+            "mode": "instruct"
+        },
+        "prompt": "Based on the given data:\n```\n{DATA}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph {output} in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+        "start_with": "Sure! Here is the {output}:\n\"",
+        "output": {
+            "ice_hockey": "ice hockey game summary",
+            "openweather": "five-day weather forecast",
+            "gsmarena": "product description",
+            "owid": "chart caption",
+            "wikidata": "entity description"
+        },
+        "name": "default"
+    },
+    "generated": [
+        {
+            "in": "Based on the given data:\n```\nVanuatu\n---\n- capital: Port Vila\n- category for maps: Maps of Vanuatu\n- head of government: Charlot Salwai\n- language used: Letemboi\n- language used: Litzlitz\n- language used: Port Sandwich\n- language used: Maragus\n- language used: West Ambae\n- language used: Polonombauk\n- member of: UNESCO\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "Vanuatu is a country located in the South Pacific Ocean, with Port Vila as its capital. The head of government is Charlot Salwai, and the country is a member of UNESCO. The official languages spoken in Vanuatu include Letemboi, Litzlitz, Port Sandwich, Maragus, West Ambae, and Polonombauk. Vanuatu is also categorized under \"Maps of Vanuatu.",
+            "tokens": {
+                "in": 161,
+                "out": 91
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\nLay the Favorite\n---\n- ICAA rating: not recommended for children under 12\n- cast member: Joshua Jackson\n- cast member: Laura Prepon\n- distributed by: Cheetah Vision\n- film editor: Mick Audsley\n- filming location: Las Vegas Valley\n- genre: comedy film\n- instance of: film\n- narrative location: Las Vegas\n- narrative location: New York\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "Lay the Favorite is a comedy film that was filmed in the Las Vegas Valley and New York. It features Joshua Jackson and Laura Prepon in the cast and was edited by Mick Audsley. The film is not recommended for children under 12 and was distributed by Cheetah Vision.",
+            "tokens": {
+                "in": 155,
+                "out": 57
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\nDuchy of Savoy\n---\n- capital: Turin\n- category for people born here: Naissance dans le duché de Savoie\n- category of associated people: Personnalité du duché de Savoie\n- described by source: Armenian Soviet Encyclopedia\n- instance of: state in the Holy Roman Empire\n- instance of: historical country\n- official language: French\n- official language: Latin\n- official language: Franco-Provençal\n- topic's main category: Duchy of Savoy\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "The Duchy of Savoy was a historical country and a state in the Holy Roman Empire with its capital in Turin. It was officially recognized as having French, Latin, and Franco-Provençal as its official languages. People born in the duchy were categorized as \"Naissance dans le duché de Savoie,\" and associated individuals were classified under \"Personnalité du duché de Savoie.\" The Duchy of Savoy is a topic's main category and is described in the Armenian Soviet Encyclopedia.",
+            "tokens": {
+                "in": 187,
+                "out": 114
+            }
+        }
+    ]
+}

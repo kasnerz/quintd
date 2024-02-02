@@ -1,0 +1,50 @@
+{
+    "dataset": "ice_hockey",
+    "model": "mistral",
+    "setup": {
+        "params": {
+            "max_new_tokens": 512,
+            "repetition_penalty": 1.0,
+            "do_sample": false,
+            "truncation_length": 32768,
+            "auto_max_new_tokens": false,
+            "mode": "instruct"
+        },
+        "prompt": "Based on the given data:\n```\n{DATA}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph {output} in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+        "start_with": "Sure! Here is the {output}:\n\"",
+        "output": {
+            "ice_hockey": "ice hockey game summary",
+            "openweather": "five-day weather forecast",
+            "gsmarena": "product description",
+            "owid": "chart caption",
+            "wikidata": "entity description"
+        },
+        "name": "default"
+    },
+    "generated": [
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'NHL 23/24', 'year': '23/24', 'id': 52528}, 'homeTeam': {'name': 'Carolina Hurricanes', 'shortName': 'Hurricanes', 'nameCode': 'CAR', 'id': 3680, 'country': 'USA'}, 'awayTeam': {'name': 'Columbus Blue Jackets', 'shortName': 'Blue Jackets', 'nameCode': 'CBJ', 'id': 3683, 'country': 'USA'}, 'homeScore': {'display': 3, 'period1': 0, 'period2': 0, 'period3': 3, 'normaltime': 3}, 'awayScore': {'display': 2, 'period1': 0, 'period2': 0, 'period3': 2, 'normaltime': 2}, 'id': 11385988, 'startTimestamp': 1701036000, 'startDatetime': '2023-11-26 23:00:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "On November 26th, 2023, the Carolina Hurricanes hosted the Columbus Blue Jackets in a game that was part of the NHL 23/24 season. The game was played in the normaltime period, with the Hurricanes winning 3-2. The Hurricanes scored their goals in the third period, while the Blue Jackets scored their goals in the second period. The game was played in the USA, with the Hurricanes representing the country of the USA and the Blue Jackets also representing the country of the USA.",
+            "tokens": {
+                "in": 338,
+                "out": 122
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'KHL 23/24', 'year': '23/24', 'id': 52523}, 'homeTeam': {'name': 'Avtomobilist Yekaterinburg', 'shortName': 'Avtomobilist', 'nameCode': 'AVT', 'id': 36346, 'country': 'Russia'}, 'awayTeam': {'name': 'Spartak Moscow', 'shortName': 'Spartak', 'nameCode': 'SPA', 'id': 3937, 'country': 'Russia'}, 'homeScore': {'display': 1, 'period1': 0, 'period2': 0, 'period3': 1, 'normaltime': 1}, 'awayScore': {'display': 4, 'period1': 0, 'period2': 2, 'period3': 2, 'normaltime': 4}, 'id': 11386721, 'startTimestamp': 1701093600, 'startDatetime': '2023-11-27 15:00:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "On November 27th, 2023, Avtomobilist Yekaterinburg hosted Spartak Moscow in the KHL 23/24 season. The game was played in Yekaterinburg, Russia, and the home team won with a score of 1-0 in the third period. The away team scored 4 goals in the game, with 2 goals scored in the second period and 2 goals scored in the third period. The game was played in normal time, with no overtime or shootout. The game was played in the 11386721th game of the season and started at 15:00:00 local time.",
+            "tokens": {
+                "in": 342,
+                "out": 152
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'MHL 23/24', 'year': '23/24', 'id': 53985}, 'homeTeam': {'name': 'Stalnye Lisy', 'shortName': 'Stalnye Lisy', 'nameCode': 'STA', 'id': 79777, 'country': 'Russia'}, 'awayTeam': {'name': 'Irbis Kazan', 'shortName': 'Irbis Kazan', 'nameCode': 'IKA', 'id': 170780, 'country': 'Russia'}, 'homeScore': {'display': 4, 'period1': 1, 'period2': 0, 'period3': 2, 'normaltime': 3, 'overtime': 0, 'penalties': 1}, 'awayScore': {'display': 3, 'period1': 3, 'period2': 0, 'period3': 0, 'normaltime': 3, 'overtime': 0, 'penalties': 0}, 'id': 11534695, 'startTimestamp': 1701172800, 'startDatetime': '2023-11-28 13:00:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "On November 28th, 2023, the Stalnye Lisy and Irbis Kazan teams faced off in a game of the MHL 23/24 season. The game was played at the home arena of Stalnye Lisy, with Stalnye Lisy scoring 4 goals and Irbis Kazan scoring 3 goals. The game went into normaltime, with Stalnye Lisy winning the game. The game was played in accordance with the rules of the MHL 23/24 season, with each team playing two periods of 20 minutes each, followed by a 10-minute overtime period if the game was still tied. The game was also subject to penalties, with Stalnye Lisy receiving one penalty and Irbis Kazan receiving none.",
+            "tokens": {
+                "in": 375,
+                "out": 178
+            }
+        }
+    ]
+}

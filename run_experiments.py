@@ -16,7 +16,7 @@ logger.addHandler(fh)
 if __name__ == "__main__":
     datasets = ["ice_hockey", "gsmarena", "openweather", "owid", "wikidata"]
     models = ["zephyr", "mistral", "llama2", "gpt-3.5"]
-    setups = ["default"]
+    setups = ["direct"]
     splits = ["dev", "test"]
     api_url = os.environ.get("TG_WEBUI_API_URL")
 

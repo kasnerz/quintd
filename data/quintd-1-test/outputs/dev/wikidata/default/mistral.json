@@ -1,0 +1,50 @@
+{
+    "dataset": "wikidata",
+    "model": "mistral",
+    "setup": {
+        "params": {
+            "max_new_tokens": 512,
+            "repetition_penalty": 1.0,
+            "do_sample": false,
+            "truncation_length": 32768,
+            "auto_max_new_tokens": false,
+            "mode": "instruct"
+        },
+        "prompt": "Based on the given data:\n```\n{DATA}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph {output} in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+        "start_with": "Sure! Here is the {output}:\n\"",
+        "output": {
+            "ice_hockey": "ice hockey game summary",
+            "openweather": "five-day weather forecast",
+            "gsmarena": "product description",
+            "owid": "chart caption",
+            "wikidata": "entity description"
+        },
+        "name": "default"
+    },
+    "generated": [
+        {
+            "in": "Based on the given data:\n```\nVanuatu\n---\n- capital: Port Vila\n- category for maps: Maps of Vanuatu\n- head of government: Charlot Salwai\n- language used: Letemboi\n- language used: Litzlitz\n- language used: Port Sandwich\n- language used: Maragus\n- language used: West Ambae\n- language used: Polonombauk\n- member of: UNESCO\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "Vanuatu is a country located in the South Pacific Ocean. Its capital is Port Vila and it is a member of UNESCO. The country has a diverse linguistic landscape with languages such as Letemboi, Litzlitz, Port Sandwich, Maragus, West Ambae, and Polonombauk being spoken. The head of government of Vanuatu is Charlot Salwai. The country is known for its unique cultural heritage and natural beauty, making it a popular tourist destination.",
+            "tokens": {
+                "in": 170,
+                "out": 108
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\nLay the Favorite\n---\n- ICAA rating: not recommended for children under 12\n- cast member: Joshua Jackson\n- cast member: Laura Prepon\n- distributed by: Cheetah Vision\n- film editor: Mick Audsley\n- filming location: Las Vegas Valley\n- genre: comedy film\n- instance of: film\n- narrative location: Las Vegas\n- narrative location: New York\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "Lay the Favorite is a comedy film that was distributed by Cheetah Vision and filmed in the Las Vegas Valley. The film features Joshua Jackson and Laura Prepon as cast members and was edited by Mick Audsley. The narrative locations of the film are Las Vegas and New York, and the ICAA rating recommends that the film is not suitable for children under 12 years old.",
+            "tokens": {
+                "in": 164,
+                "out": 83
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\nDuchy of Savoy\n---\n- capital: Turin\n- category for people born here: Naissance dans le duché de Savoie\n- category of associated people: Personnalité du duché de Savoie\n- described by source: Armenian Soviet Encyclopedia\n- instance of: state in the Holy Roman Empire\n- instance of: historical country\n- official language: French\n- official language: Latin\n- official language: Franco-Provençal\n- topic's main category: Duchy of Savoy\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph entity description in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "The Duchy of Savoy was a state in the Holy Roman Empire and a historical country located in present-day Italy. It was known for its rich history and culture, with its capital being Turin. People born in the duchy were categorized as Naissance dans le duché de Savoie, while associated people were categorized as Personnalité du duché de Savoie. The duchy was described by the Armenian Soviet Encyclopedia and its official languages were French, Latin, and Franco-Provençal. The duchy is now a topic of interest for historians and enthusiasts of Italian culture.",
+            "tokens": {
+                "in": 193,
+                "out": 138
+            }
+        }
+    ]
+}

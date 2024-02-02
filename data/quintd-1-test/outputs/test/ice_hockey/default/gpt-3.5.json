@@ -1,0 +1,50 @@
+{
+    "dataset": "ice_hockey",
+    "model": "gpt-3.5",
+    "setup": {
+        "params": {
+            "max_new_tokens": 512,
+            "repetition_penalty": 1.0,
+            "do_sample": false,
+            "truncation_length": 32768,
+            "auto_max_new_tokens": false,
+            "mode": "instruct"
+        },
+        "prompt": "Based on the given data:\n```\n{DATA}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph {output} in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+        "start_with": "Sure! Here is the {output}:\n\"",
+        "output": {
+            "ice_hockey": "ice hockey game summary",
+            "openweather": "five-day weather forecast",
+            "gsmarena": "product description",
+            "owid": "chart caption",
+            "wikidata": "entity description"
+        },
+        "name": "default"
+    },
+    "generated": [
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'Liiga 23/24', 'year': '23/24', 'id': 52194}, 'homeTeam': {'name': 'Tappara Tampere', 'shortName': 'Tappara', 'nameCode': 'TAP', 'id': 3834, 'country': 'Finland'}, 'awayTeam': {'name': 'Oulun Kärpät', 'shortName': 'Kärpät', 'nameCode': 'KOU', 'id': 3835, 'country': 'Finland'}, 'homeScore': {'display': 4, 'period1': 2, 'period2': 0, 'period3': 2, 'normaltime': 4}, 'awayScore': {'display': 1, 'period1': 1, 'period2': 0, 'period3': 0, 'normaltime': 1}, 'id': 11354132, 'startTimestamp': 1701275400, 'startDatetime': '2023-11-29 17:30:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "In a match from the Liiga 23/24 season, Tappara Tampere faced off against Oulun Kärpät. The game took place on November 29, 2023, at 17:30. Tappara Tampere emerged victorious with a final score of 4-1. The home team scored 2 goals in the first period and added 2 more in the third period, while the away team managed to score only 1 goal in the first period. This win marked an important moment for Tappara Tampere in the ongoing season.",
+            "tokens": {
+                "in": 307,
+                "out": 116
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'VHL 23/24', 'year': '23/24', 'id': 53511}, 'homeTeam': {'name': 'Zvezda Moscow', 'shortName': 'Zvezda', 'nameCode': 'ZVE', 'id': 202980, 'country': 'Russia'}, 'awayTeam': {'name': 'Omskie Kryliya', 'shortName': 'Omskie Kryliya', 'nameCode': 'OMS', 'id': 389610, 'country': 'Russia'}, 'homeScore': {'display': 4, 'period1': 1, 'period2': 1, 'period3': 2, 'normaltime': 4}, 'awayScore': {'display': 0, 'period1': 0, 'period2': 0, 'period3': 0, 'normaltime': 0}, 'id': 11482983, 'startTimestamp': 1701262800, 'startDatetime': '2023-11-29 14:00:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "In the VHL 23/24 season, Zvezda Moscow faced off against Omskie Kryliya. The game took place on November 29, 2023, at 14:00. Zvezda Moscow dominated the game, securing a 4-0 victory over Omskie Kryliya. The home team scored 1 goal in the first period, 1 goal in the second period, and 2 goals in the third period, while the away team failed to score throughout the game. This decisive win earned Zvezda Moscow a well-deserved victory in front of their home crowd.",
+            "tokens": {
+                "in": 304,
+                "out": 119
+            }
+        },
+        {
+            "in": "Based on the given data:\n```\n{'season': {'name': 'Liiga 23/24', 'year': '23/24', 'id': 52194}, 'homeTeam': {'name': 'TPS Turku', 'shortName': 'TPS', 'nameCode': 'TPS', 'id': 3836, 'country': 'Finland'}, 'awayTeam': {'name': 'HPK Hämeenlinna', 'shortName': 'HPK', 'nameCode': 'HPK', 'id': 3837, 'country': 'Finland'}, 'homeScore': {'display': 1, 'period1': 0, 'period2': 0, 'period3': 1, 'normaltime': 1}, 'awayScore': {'display': 4, 'period1': 2, 'period2': 2, 'period3': 0, 'normaltime': 4}, 'id': 11354137, 'startTimestamp': 1701189000, 'startDatetime': '2023-11-28 17:30:00'}\n```\n\nYour task is to write a brief, fluent, and coherent single-paragraph ice hockey game summary in natural language. The text should be balanced and neutral. Make sure that all the facts mentioned in the text can be derived from the input data, do *not* add any extra information.",
+            "out": "In the Liiga 23/24 season, TPS Turku faced off against HPK Hämeenlinna. The game took place on November 28, 2023, at 17:30. HPK Hämeenlinna emerged victorious with a final score of 4-1, with a strong performance in both the first and second periods, securing their win in normal time. TPS Turku, on the other hand, struggled to keep up, managing to score only in the third period. Overall, it was a well-contested game between the two Finnish teams.",
+            "tokens": {
+                "in": 295,
+                "out": 119
+            }
+        }
+    ]
+}

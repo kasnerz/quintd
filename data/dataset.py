@@ -15,7 +15,7 @@ import string
 
 
 class Dataset:
-    def __init__(self, name, base_path="."):
+    def __init__(self, name, base_path):
         self.base_path = base_path
         self.data_path = f"{self.base_path}/data"
         self.output_path = f"{self.base_path}/outputs"
