@@ -2,6 +2,8 @@
 .vscode
 .venv
 gsmarena-api
+*~
+fetched
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
