@@ -4,7 +4,7 @@ Code for the paper *Beyond Reference-Based Metrics: Analyzing Behaviors of Open 
 ## Quick pointers
 
 - [data](data/) - **Quintd** data collection framework.
-    - [generate_dataset.py](generate_dataset.py) - A script for generating a new dataset & replicating the collection of Quintd-1.
+    - [generate_dataset.py](data/generate_dataset.py) - A script for generating a new dataset & replicating the collection of Quintd-1.
 - [data/quintd-1](data/quintd-1) - Resources for the **Quintd-1** dataset.
     - [annotations](data/quintd-1/annotation) - Error annotations (GPT-4 / human).
     - [data](data/quintd-1/data) - Data inputs.
@@ -26,15 +26,15 @@ python data/generate_dataset.py -d [DOMAIN] -n [EXAMPLES] -r [SEED] -o [OUT_DIR]
 
 A basic setting which will generate a small dataset (10 examples per domain) with the random seed 7331:
 ```
-SEED=7331
 NUM_EXAMPLES=10
+SEED=7331
 
 python data/generate_dataset.py -n $NUM_EXAMPLES -r $SEED
 ```
 
-The dataset (Quintd-1) used for the experiments in the paper is available in [data/quintd-1](data/quintd-1).
+The dataset (Quintd-1) used for the experiments in the paper is available in [data/quintd-1/data](data/quintd-1/data).
 
-The following code will try to replicate the data collection for Quintd-1 (up to the difference in API responses):
+The following code will try to replicate the data collection for Quintd-1 (up to some differences in API responses):
 ```
 python data/generate_dataset.py --replicate
 ```
