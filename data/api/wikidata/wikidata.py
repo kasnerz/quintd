@@ -38,6 +38,7 @@ def extract_subgraphs(subgraphs_per_domain):
             archive_path = os.path.join(data_dir, f"{subdomain}.tar.gz")
             logger.info(f"Pre-downloading {subdomain} data into {archive_path}")
 
+            os.makedirs(data_dir, exist_ok=True)
             response = requests.get(url)
             with open(archive_path, "wb") as f:
                 f.write(response.content)

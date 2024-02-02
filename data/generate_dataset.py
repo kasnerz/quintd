@@ -31,6 +31,47 @@ def get_api_key(api_keys, api_name):
     return api_key
 
 
+def replicate_quintd1(seed, out_dir):
+    seeds = {
+        "ice_hockey": 42,
+        "gsmarena": 42,
+        "openweather": 0,
+        "owid": 0,
+        "wikidata": 42,
+    }
+    ice_hockey_dev_date = "27/11/2023"
+    ice_hockey_test_date = "29/11/2023"
+    examples = 100
+
+    if out_dir is None:
+        out_dir = os.path.join(dir_path, f"quintd-replication")
+
+    extra_args = {
+        "gsmarena_full": False,
+        "ice_hockey_dev_date": ice_hockey_dev_date,
+        "ice_hockey_test_date": ice_hockey_test_date,
+    }
+
+    for domain in args.domains:
+        module = domains[domain]
+        seed = seeds[domain]
+        os.makedirs(os.path.join(out_dir, domain), exist_ok=True)
+
+        logger.info(f"Preparing data for the {domain} domain...")
+        api_key = get_api_key(api_keys, domain)
+        domain_dir = os.path.join(out_dir, domain)
+
+        module.generate_dataset(
+            api_key=api_key,
+            seed=seed,
+            n_examples=examples,
+            out_dir=domain_dir,
+            extra_args=extra_args,
+            verbose=False,
+        )
+        logger.info(f"Done.")
+
+
 if __name__ == "__main__":
     domains = {
         "ice_hockey": ice_hockey,
@@ -83,15 +124,16 @@ if __name__ == "__main__":
         "--ice_hockey_date",
         type=str,
         default=None,
-        help="Matches for ice_hockey are downloaded for a specific date. The date will be selected from a range based on the random seed. However, you can also specify the date for the `dev` set manually. The format in the format DD/MM/YYYY. The test set will be generated for the next day after the dev set.",
+        help="Matches for ice_hockey are downloaded for a specific date. The date will be selected from a range based on the random seed. However, you can also specify the date for the `dev` set manually. The format is DD/MM/YYYY. The test set will be generated for the next day after the dev set.",
     )
     parser.add_argument(
         "--replicate",
         action="store_true",
         default=False,
-        help="Replicate the collection of the Quintd-1 dataset. Note that the replication may not be exact as the API responses may differ.",
+        help="Replicate the collection of the Quintd-1 dataset. Other arguments will be ignored. Note that the replication may not be exact as the API responses may differ.",
     )
     args = parser.parse_args()
+    logger.info(f"Arguments: {args}")
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     api_keys = yaml.load(
@@ -99,19 +141,11 @@ if __name__ == "__main__":
     )
 
     if args.replicate:
-        raise NotImplementedError(
-            "Replication of the Quintd-1 dataset is not implemented yet."
+        logger.warning(
+            "Attempting to replicate data collection for the Quintd-1 dataset. Note that the replication may not be exact as the API responses may differ."
         )
-        seeds = {
-            "ice_hockey": 42,
-            "gsmarena": 42,
-            "openweather": 0,
-            "owid": 0,
-            "wikidata": 42,
-        }
-        ice_hockey_dev_date = "27/11/2023"
-        ice_hockey_test_date = "29/11/2023"
-        examples = 100
+        replicate_quintd1(args.seed, args.out_dir)
+        exit()
 
     if args.examples > 100:
         logger.warning(
@@ -122,6 +156,11 @@ if __name__ == "__main__":
 
     if args.out_dir is None:
         out_dir = os.path.join(dir_path, f"quintd-custom-{args.seed}")
+
+    logger.info("=" * 80)
+    logger.info(f"Generating a dataset with Quintd.")
+    logger.info("=" * 80)
+    logger.info(f"Random seed: {args.seed}")
 
     if args.ice_hockey_date is None:
         # date is not specified explicitly, so we generate a random date between Oct. 7, 2022 to Apr. 14, 2023 (NHL season)
@@ -149,15 +188,18 @@ if __name__ == "__main__":
         module = domains[domain]
         os.makedirs(os.path.join(out_dir, domain), exist_ok=True)
 
-        logger.info(f"Processing {domain} dataset")
-        openweather_api_key = get_api_key(api_keys, domain)
-        openweather_out_dir = os.path.join(out_dir, domain)
+        logger.info(f"Preparing data for the {domain} domain...")
+        api_key = get_api_key(api_keys, domain)
+        out_dir = os.path.join(out_dir, domain)
 
         module.generate_dataset(
-            api_key=openweather_api_key,
+            api_key=api_key,
             seed=args.seed,
             n_examples=args.examples,
-            out_dir=openweather_out_dir,
+            out_dir=out_dir,
             extra_args=extra_args,
             verbose=args.verbose,
         )
+        logger.info(f"Done.")
+
+    logger.info(f"Finished. The dataset is saved to {out_dir}")

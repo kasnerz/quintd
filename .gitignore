@@ -4,6 +4,8 @@
 gsmarena-api
 *~
 fetched
+geonames-all-cities-with-a-population-1000.csv
+data/api/wikidata/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

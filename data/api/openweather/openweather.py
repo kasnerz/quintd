@@ -39,8 +39,9 @@ def get_weather_from_api(location, api_key):
 
 
 def save_cities(seed, n_examples, out_dir, cities_path):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
     cities_all_file = os.path.join(
-        out_dir, f"geonames-all-cities-with-a-population-1000.csv"
+        dir_path, f"geonames-all-cities-with-a-population-1000.csv"
     )
 
     if not os.path.exists(cities_all_file):
@@ -81,7 +82,8 @@ def save_cities(seed, n_examples, out_dir, cities_path):
 
 def generate_dataset(api_key, seed, n_examples, out_dir, extra_args, verbose=False):
     all_forecasts = {"forecasts": []}
-    cities_path = os.path.join(out_dir, f"cities.json")
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    cities_path = os.path.join(dir_path, f"cities-{seed}.json")
 
     if not os.path.exists(cities_path):
         save_cities(seed, n_examples, out_dir, cities_path)
