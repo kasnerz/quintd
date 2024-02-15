@@ -9,10 +9,15 @@ import argparse
 import pandas as pd
 from collections import defaultdict
 from scipy.stats import pearsonr
+import sys
+from pathlib import Path
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from data.dataset import OpenWeather, IceHockey, GSMArena, Wikidata, OurWorldInData
 
-ANNOTATIONS_DIR = os.path.join(os.path.dirname(__file__), "annotations")
+DATASET_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "quintd-1")
+ANNOTATIONS_DIR = os.path.join(DATASET_DIR, "annotations")
 
 dataset_dict = {
     "openweather": OpenWeather,
@@ -27,12 +32,12 @@ error_mapping = {
     1: "Not checkable",
     2: "Misleading",
     3: "Other",
-    4: "All categories"
+    4: "All categories",
 }
 
 
 def load_dataset(dataset_name):
-    return dataset_dict[dataset_name]()
+    return dataset_dict[dataset_name](base_path=DATASET_DIR)
 
 
 def generate_annotation_index():
@@ -42,15 +47,7 @@ def generate_annotation_index():
     annotation_index = []
 
     for source in ["gpt-4", "human"]:
-
-        if source == "gpt-4":
-            jsonl_files = glob.glob(os.path.join(ANNOTATIONS_DIR, source, "*.jsonl"))
-        else:
-            jsonl_files = []
-            for table_idx in range(100):
-                # find the first JSONL file that begins with `{table_idx}-`
-                jsonl_file = glob.glob(os.path.join(ANNOTATIONS_DIR, source, f"{table_idx}-*.jsonl"))[0]
-                jsonl_files.append(jsonl_file)
+        jsonl_files = glob.glob(os.path.join(ANNOTATIONS_DIR, source, "*.jsonl"))
 
         for jsonl_file in jsonl_files:
             with open(jsonl_file) as f:
@@ -60,7 +57,9 @@ def generate_annotation_index():
 
                     for annotation in annotations:
                         # prefix all the keys in annotation with "annotation_"
-                        error_record = {f"annotation_{k}": v for k, v in annotation.items()}
+                        error_record = {
+                            f"annotation_{k}": v for k, v in annotation.items()
+                        }
                         # append all the fields from the annotation record
                         error_record.update(annotation_record)
                         error_record.pop("annotations")
@@ -72,6 +71,49 @@ def generate_annotation_index():
 
     return df
 
+
+def generate_human_annotation_index():
+    annotation_index = []
+    jsonl_files = Path(ANNOTATIONS_DIR) / "human_corr"
+    jsonl_files = sorted(list(jsonl_files.rglob("*.jsonl")))
+    human_ctr = 0
+    current_table_idx = None
+
+    for jsonl_file in jsonl_files:
+        table_idx = int(jsonl_file.stem.split("-")[0])
+
+        if table_idx != current_table_idx:
+            human_ctr = 0
+            current_table_idx = table_idx
+        else:
+            human_ctr += 1
+
+        with open(jsonl_file) as f:
+            for line in f:
+                annotation_record = json.loads(line)
+                annotations = annotation_record["annotations"]
+
+                for annotation in annotations:
+                    # prefix all the keys in annotation with "annotation_"
+                    error_record = {f"annotation_{k}": v for k, v in annotation.items()}
+                    # append all the fields from the annotation record
+                    error_record.update(annotation_record)
+                    error_record.pop("annotations")
+                    # add the source
+                    # error_record["source"] = "human-" + str(human_ctr)
+
+                    # this is very stupid but it allows us to compute easily the correlations between human annotators with the existing code: we simply consider the second human annotator as the "gpt-4" annotator
+                    if human_ctr == 0:
+                        error_record["source"] = "human"
+                    elif human_ctr == 1:
+                        error_record["source"] = "gpt-4"
+                    else:
+                        continue
+
+                    annotation_index.append(error_record)
+
+    df = pd.DataFrame(annotation_index)
+    return df
 
 
 def generate_annotation_key_value_index():
@@ -87,14 +129,62 @@ def generate_annotation_key_value_index():
             with open(jsonl_file) as f:
                 for line in f:
                     annotation = json.loads(line)
-                    key = (annotation["dataset"], annotation["split"], annotation["table_idx"], annotation["model"], annotation["setup"])
+                    key = (
+                        annotation["dataset"],
+                        annotation["split"],
+                        annotation["table_idx"],
+                        annotation["model"],
+                        annotation["setup"],
+                    )
                     annotations[key].append(annotation)
 
     return annotations
 
 
+def generate_human_annotation_key_value_index():
+    """
+    All annotations as a dictionary, keys are tuples of (dataset, split, table_idx, model, setup)
+    """
+    annotations = defaultdict(list)
+    jsonl_files = Path(ANNOTATIONS_DIR) / "human_corr"
+    jsonl_files = sorted(list(jsonl_files.rglob("*.jsonl")))
+    human_ctr = 0
+    current_table_idx = None
+
+    for jsonl_file in jsonl_files:
+        table_idx = int(jsonl_file.stem.split("-")[0])
+
+        if table_idx != current_table_idx:
+            human_ctr = 0
+            current_table_idx = table_idx
+        else:
+            human_ctr += 1
+
+        with open(jsonl_file) as f:
+            for line in f:
+                annotation = json.loads(line)
+                key = (
+                    annotation["dataset"],
+                    annotation["split"],
+                    annotation["table_idx"],
+                    annotation["model"],
+                    annotation["setup"],
+                )
+
+                # hotfix to be able use existing code for human correlation, see also generate_human_annotation_index
+                if human_ctr > 1:
+                    breakpoint()
+                    continue
+                elif human_ctr == 1:
+                    annotation["annotator_id"] = "gpt-4"
+
+                annotations[key].append(annotation)
+
+    return annotations
+
+
 def generate_model_outputs_latex(dataset_name, table_idx):
-    pd.set_option('display.max_colwidth', None)
+    pd.set_option("display.max_colwidth", None)
 
     annotations = generate_annotation_key_value_index()
 
@@ -116,8 +206,14 @@ def generate_model_outputs_latex(dataset_name, table_idx):
 
         # get human annotations
         annotations_example = {
-            "Human" : [x for x in annotation_fullset if not x["annotator_id"].startswith("gpt-4")][0],
-            "GPT-4" : [x for x in annotation_fullset if x["annotator_id"].startswith("gpt-4")][0]
+            "Human": [
+                x
+                for x in annotation_fullset
+                if not x["annotator_id"].startswith("gpt-4")
+            ][0],
+            "GPT-4": [
+                x for x in annotation_fullset if x["annotator_id"].startswith("gpt-4")
+            ][0],
         }
 
         entry = {
@@ -140,43 +236,51 @@ def generate_model_outputs_latex(dataset_name, table_idx):
 
                 if end < previous_end:
                     continue
-                
+
                 previous_end = end
 
                 error_str = error_mapping[annotation["type"]].lower().replace(" ", "")
-                
+
                 highlighted_text = f"\\ctext{{{error_str}}}{{{output[start:end]}}}"
                 output = output[:start] + highlighted_text + output[end:]
                 shift += len(highlighted_text) - len(annotation["text"])
 
-            entry[source] = output  
+            entry[source] = output
 
         df.append(entry)
 
     df = pd.DataFrame(df)
     # sort in order : "llama2", "mistral", "zephyr", "gpt-3.5"
-    df = df.sort_values(by=["Model"], key=lambda x: x.map({"llama2": 0, "mistral": 1, "zephyr": 2, "gpt-3.5": 3}))
+    df = df.sort_values(
+        by=["Model"],
+        key=lambda x: x.map({"llama2": 0, "mistral": 1, "zephyr": 2, "gpt-3.5": 3}),
+    )
     df = df.reset_index(drop=True)
-
 
     # title case the model names
     df["Model"] = df["Model"].str.title()
     df["Model"] = df["Model"].str.replace("Gpt-3.5", "GPT-3.5")
-
 
     styler = df.style
     styler.hide(axis="index")
     styler.applymap(lambda v: "font-weight: bold;", subset=["Model"])
     styler.applymap_index(lambda v: "font-weight: bold;", axis="columns")
     styler.format(escape="latex")
-    table = styler.to_latex(convert_css=True, hrules=True,column_format="lp{6.5cm}p{6.5cm}")
+    table = styler.to_latex(
+        convert_css=True, hrules=True, column_format="lp{6.5cm}p{6.5cm}"
+    )
 
     # table = table.replace("%", "\\%")
     table = table.replace("°", "\\textdegree{}")
 
-    table = re.sub(r"\\textbackslash ctext\\{(\w+)\\}\\{(.*?)\\}", r"\\ctext{\1}{\2}", table)
+    table = re.sub(
+        r"\\textbackslash ctext\\{(\w+)\\}\\{(.*?)\\}", r"\\ctext{\1}{\2}", table
+    )
 
-    table = table.replace("\\bfseries Human & GPT-4", "\\textbf{Human annotations} (\\humanmetric) & \\textbf{GPT-4 annotations} (\\gptmetric)")
+    table = table.replace(
+        "\\bfseries Human & GPT-4",
+        "\\textbf{Human annotations} (\\humanmetric) & \\textbf{GPT-4 annotations} (\\gptmetric)",
+    )
 
     # print(table)
 
@@ -184,10 +288,7 @@ def generate_model_outputs_latex(dataset_name, table_idx):
         f.write(table)
 
 
-
-def generate_token_and_example_level_table():
-    annotations = generate_annotation_key_value_index()
-
+def generate_token_and_example_level_table(annotations):
     token_list = []
     example_list = []
     split = "test"
@@ -211,44 +312,57 @@ def generate_token_and_example_level_table():
                 annotation_fullset = annotations.get(key, [])
 
                 example = {
-                    "errors_human" : {x : 0 for x in range(4)}, 
-                    "errors_gpt-4" : {x : 0 for x in range(4)},
-                    "dataset" : dataset.name, 
-                    "model": model, 
-                    "setup" : setup, 
-                    "split" : split, 
-                    "table_idx" : table_idx}
+                    "errors_human": {x: 0 for x in range(4)},
+                    "errors_gpt-4": {x: 0 for x in range(4)},
+                    "dataset": dataset.name,
+                    "model": model,
+                    "setup": setup,
+                    "split": split,
+                    "table_idx": table_idx,
+                }
 
-                tokens = [{
-                    "token" : m.group(0),
-                    "start" : m.start(), 
-                    "end" : m.end()-1, 
-                    "error_human" : None, 
-                    "error_gpt-4" : None, 
-                    "dataset" : dataset.name, 
-                    "model": model, 
-                    "setup" : setup, 
-                    "split" : split, 
-                    "table_idx" : table_idx} for m in re.finditer(r'\S+', generated_output["generated"])]
+                tokens = [
+                    {
+                        "token": m.group(0),
+                        "start": m.start(),
+                        "end": m.end() - 1,
+                        "error_human": None,
+                        "error_gpt-4": None,
+                        "dataset": dataset.name,
+                        "model": model,
+                        "setup": setup,
+                        "split": split,
+                        "table_idx": table_idx,
+                    }
+                    for m in re.finditer(r"\S+", generated_output["generated"])
+                ]
 
                 # sort annotation_fullset by annotator_id
-                annotation_fullset = sorted(annotation_fullset, key=lambda x: x["annotator_id"])
+                annotation_fullset = sorted(
+                    annotation_fullset, key=lambda x: x["annotator_id"]
+                )
 
-                # keep the last two annotations in the annotation set
-                annotation_fullset = annotation_fullset[-2:]
-
-                # this is a temporary fix which should always leave the gpt-4 annotation + 1 human annotation (in case we have more)
+                if len(annotation_fullset) > 2:
+                    print(
+                        f"Warning: more than 2 annotations for {dataset.name} {split} {table_idx} {model} {setup}"
+                    )
 
                 for annotation_set in annotation_fullset:
                     annotation_list = annotation_set["annotations"]
-                    source = "gpt-4" if annotation_set["annotator_id"].startswith("gpt-4") else "human"
-                    
+                    source = (
+                        "gpt-4"
+                        if annotation_set["annotator_id"].startswith("gpt-4")
+                        else "human"
+                    )
+
                     for annotation in annotation_list:
                         start = annotation["start"]
                         end = start + len(annotation["text"])
 
                         if annotation["type"] not in range(4):
-                            print(f"Invalid annotation type {annotation['type']} in {annotation}")
+                            print(
+                                f"Invalid annotation type {annotation['type']} in {annotation}"
+                            )
                             continue
 
                         example[f"errors_{source}"][annotation["type"]] += 1
@@ -256,12 +370,18 @@ def generate_token_and_example_level_table():
                         # mark all tokens that are at least partially inside the annotation span as having the error type
                         for token in tokens:
                             if (
-                                (token["start"] >= start and token["start"] <= end) # token starts inside the annotation span
-                                or (token["end"] >= start and token["end"] <= end) # token ends inside the annotation span
-                                or (token["start"] <= start and token["end"] >= end) # token fully contains the annotation span
-                                or (token["start"] >= start and token["end"] <= end)):  # annotation fully contains the token
+                                (
+                                    token["start"] >= start and token["start"] <= end
+                                )  # token starts inside the annotation span
+                                or (
+                                    token["end"] >= start and token["end"] <= end
+                                )  # token ends inside the annotation span
+                                or (
+                                    token["start"] <= start and token["end"] >= end
+                                )  # token fully contains the annotation span
+                                or (token["start"] >= start and token["end"] <= end)
+                            ):  # annotation fully contains the token
                                 token[f"error_{source}"] = int(annotation["type"])
-
 
                 token_list.extend(tokens)
                 example_list.append(example)
@@ -272,10 +392,14 @@ def generate_token_and_example_level_table():
     return df_tokens, df_examples
 
 
+def generate_human_corr(df_tokens, df_examples, df_domain):
+    pass
+
+
 def generate_metric_corr(df_tokens, df_examples, df_domain):
     tokens_total = len(df_tokens)
 
-    errors_human = df_tokens["error_human"].value_counts()  / tokens_total
+    errors_human = df_tokens["error_human"].value_counts() / tokens_total
     errors_gpt4 = df_tokens["error_gpt-4"].value_counts() / tokens_total
 
     # print a latex table showing a percentage of errors for each category
@@ -285,20 +409,20 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
     errors_both = df_tokens[df_tokens["error_human"] == df_tokens["error_gpt-4"]]
     errors_both = errors_both["error_human"].value_counts() / tokens_total
 
-
-    df_errors = pd.DataFrame({
-        "GPT-4": errors_gpt4,
-        "Human": errors_human,
-        "Both": errors_both,
-    })
+    df_errors = pd.DataFrame(
+        {
+            "GPT-4": errors_gpt4,
+            "Human": errors_human,
+            "Both": errors_both,
+        }
+    )
     df_errors = df_errors.rename(index=error_mapping)
-      
+
     # add the total number of errors
     df_errors.loc["Total"] = df_errors.sum()
     df_errors = df_errors.round(3)
 
     print(df_errors.to_latex())
-
 
     # token-level Pearson correlation
     human_list_all = []
@@ -312,7 +436,6 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
         gpt4_list_all.extend(gpt4_list)
 
     coeff, p = pearsonr(human_list_all, gpt4_list_all)
-
     print(f"Token-level Pearson correlation: {coeff:.2f} (p={p:.2f})")
 
     # example-level Pearson correlation
@@ -325,12 +448,16 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
 
     coeff, p = pearsonr(human_list_all, gpt4_list_all)
     print(f"Example-level Pearson correlation: {coeff:.2f} (p={p:.2f})")
-    
+
     # domain-level Pearson correlation
 
     # columns are indexed by tuples ('Incorrect', 'gpt-4')","('Incorrect', 'human')","('Not checkable', 'gpt-4'), etc.
-    df_human_columns = [x for x in df_domain.columns if type(x) is tuple and x[1] == "human"]
-    df_gpt4_columns = [x for x in df_domain.columns if type(x) is tuple and x[1] == "gpt-4"]
+    df_human_columns = [
+        x for x in df_domain.columns if type(x) is tuple and x[1] == "human"
+    ]
+    df_gpt4_columns = [
+        x for x in df_domain.columns if type(x) is tuple and x[1] == "gpt-4"
+    ]
 
     df_human = df_domain[df_human_columns].copy()
     df_gpt4 = df_domain[df_gpt4_columns].copy()
@@ -339,9 +466,7 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
     vals_gpt4 = df_gpt4.values.flatten()
 
     coeff, p = pearsonr(vals_human, vals_gpt4)
-
     print(f"Domain-level Pearson correlation: {coeff:.2f} (p={p:.2f})")
-
 
     # errors_human_only = df_tokens[(df_tokens["error_human"].notnull()) & (df_tokens["error_gpt-4"].isnull())]
     # errors_gpt4_only = df_tokens[(df_tokens["error_human"].isnull()) & (df_tokens["error_gpt-4"].notnull())]
@@ -355,7 +480,7 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
 
 def generate_length_table():
     lengths_df = []
-    split="test"
+    split = "test"
 
     for dataset in dataset_dict.keys():
         dataset = load_dataset(dataset)
@@ -371,16 +496,16 @@ def generate_length_table():
 
                 if setup != "direct":
                     continue
-                
+
                 length_record = {
                     "dataset": dataset.name,
                     "table_idx": table_idx,
                     "model": model,
-                    "length": len(generated_output["generated"].split())
+                    "length": len(generated_output["generated"].split()),
                 }
 
                 lengths_df.append(length_record)
-    
+
     lengths_df = pd.DataFrame(lengths_df)
     lengths_df = lengths_df.groupby(["model", "dataset"]).mean().reset_index()
 
@@ -391,13 +516,18 @@ def generate_length_table():
 
 
 def normalize_names(df):
-    df["model"] = pd.Categorical(df["model"], ["llama2", "mistral", "zephyr", "gpt-3.5"])
+    df["model"] = pd.Categorical(
+        df["model"], ["llama2", "mistral", "zephyr", "gpt-3.5"]
+    )
 
-    df["dataset"] = pd.Categorical(df["dataset"], ["openweather", "gsmarena", "ice_hockey", "owid", "wikidata"])
+    df["dataset"] = pd.Categorical(
+        df["dataset"], ["openweather", "gsmarena", "ice_hockey", "owid", "wikidata"]
+    )
 
     df["annotation_type"] = df["annotation_type"].map(error_mapping)
 
     return df
+
 
 def generate_tables_ex_err_ratio(df):
     split = "test"
@@ -408,10 +538,15 @@ def generate_tables_ex_err_ratio(df):
     #  delete any record whose annotation_type is not in [0, 1, 2, 3]
     df = orig_df[orig_df["annotation_type"].isin([0, 1, 2, 3])]
 
+    df_percat = (
+        df.groupby(["source", "model", "annotation_type", "dataset"])["table_idx"]
+        .nunique()
+        .reset_index()
+    )
 
-    df_percat = df.groupby(['source', 'model', 'annotation_type', 'dataset'])['table_idx'].nunique().reset_index()
-
-    df_allcat = df.groupby(['source', 'model', 'dataset'])['table_idx'].nunique().reset_index()
+    df_allcat = (
+        df.groupby(["source", "model", "dataset"])["table_idx"].nunique().reset_index()
+    )
 
     # merge the dataframes
     # create a new `annotation_type` column "All categories" for `df_allcat`
@@ -421,11 +556,16 @@ def generate_tables_ex_err_ratio(df):
     df = normalize_names(df)
 
     # make the "All categories" annotation type the last one
-    df = df.pivot_table( values='table_idx', index=['model', 'dataset'], columns=[ "annotation_type", 'source'], aggfunc='first')
+    df = df.pivot_table(
+        values="table_idx",
+        index=["model", "dataset"],
+        columns=["annotation_type", "source"],
+        aggfunc="first",
+    )
 
     order = error_mapping.values()
     df = df.reindex(columns=order, level=0)
-    
+
     df = df.fillna(0)
     df = df / 100
     df = df.round(2)
@@ -434,8 +574,8 @@ def generate_tables_ex_err_ratio(df):
     # print also an average for each model across all datasets
     df = df.groupby(["model"]).mean().reset_index()
     df = df.round(2)
-    print(df.to_csv())
 
+    print(df.to_csv())
 
 
 def generate_tables_avg_errors(df):
@@ -443,7 +583,8 @@ def generate_tables_avg_errors(df):
 
     orig_df = df[df["split"] == split]
 
-    assert sorted(list(orig_df.table_idx.unique())) == list(range(100))
+    # disable for now: we don't have 100 examples for human correlations
+    # assert sorted(list(orig_df.table_idx.unique())) == list(range(100))
 
     #  delete any record whose annotation_type is not in [0, 1, 2, 3]
     df = orig_df[orig_df["annotation_type"].isin([0, 1, 2, 3])]
@@ -452,8 +593,14 @@ def generate_tables_avg_errors(df):
     # print(f"Number of examples: {nr_examples}")
 
     # # aggregate annotations by model, dataset, and error type
-    df_percat = df.groupby(["model", "dataset", "source", "annotation_type"]).size().reset_index(name="count")
-    df_allcat = df.groupby(["model", "dataset", "source"]).size().reset_index(name="count")
+    df_percat = (
+        df.groupby(["model", "dataset", "source", "annotation_type"])
+        .size()
+        .reset_index(name="count")
+    )
+    df_allcat = (
+        df.groupby(["model", "dataset", "source"]).size().reset_index(name="count")
+    )
 
     # merge the dataframes
     # create a new `annotation_type` column "All categories" for `df_allcat`
@@ -462,8 +609,13 @@ def generate_tables_avg_errors(df):
 
     df = normalize_names(df)
 
-    df = df.pivot_table( values='annotation_type', index=['model', 'dataset'], columns=[ "annotation_type", 'source'], aggfunc='first')
-    
+    df = df.pivot_table(
+        values="annotation_type",
+        index=["model", "dataset"],
+        columns=["annotation_type", "source"],
+        aggfunc="first",
+    )
+
     order = error_mapping.values()
     df = df.reindex(columns=order, level=0)
 
@@ -480,17 +632,17 @@ def generate_tables_avg_errors(df):
 
     # print also an average for each model across all datasets
     df_agg = df.groupby(["model"]).mean().reset_index()
-    df_agg = df.round(2)
+    df_agg = df_agg.round(2)
     print(df_agg.to_csv())
-
     return df, df_agg
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-r",
         "--results",
-        choices=["avg_errors", "ex_err_ratio", "metric_corr", "outputs"],
+        choices=["avg_errors", "ex_err_ratio", "metric_corr", "human_corr", "outputs"],
         help="Dataset",
         required=True,
     )
@@ -506,7 +658,19 @@ if __name__ == "__main__":
 
     elif args.results == "metric_corr":
         df = generate_annotation_index()
-        df_tokens, df_examples = generate_token_and_example_level_table()
+        annotations = generate_annotation_key_value_index()
+
+        df_tokens, df_examples = generate_token_and_example_level_table(annotations)
+        df_domain, df_domain_agg = generate_tables_avg_errors(df)
+        generate_metric_corr(df_tokens, df_examples, df_domain)
+
+    elif args.results == "human_corr":
+        df = generate_human_annotation_index()
+        human_annotations = generate_human_annotation_key_value_index()
+
+        df_tokens, df_examples = generate_token_and_example_level_table(
+            human_annotations
+        )
         df_domain, df_domain_agg = generate_tables_avg_errors(df)
         generate_metric_corr(df_tokens, df_examples, df_domain)
 
@@ -517,5 +681,3 @@ if __name__ == "__main__":
         print(f"Generating tables for example #{idx}")
         for dataset_name in dataset_dict.keys():
             generate_model_outputs_latex(dataset_name, idx)
-
-  
