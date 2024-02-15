@@ -102,7 +102,7 @@ def generate_human_annotation_index():
                     # add the source
                     # error_record["source"] = "human-" + str(human_ctr)
 
-                    # this is very stupid but it allows us to compute easily the correlations between human annotators with the existing code: we simply consider the second human annotator as the "gpt-4" annotator
+                    # this allows us to compute easily the correlations between human annotators with the existing code: we simply consider the second human annotator as the "gpt-4" annotator
                     if human_ctr == 0:
                         error_record["source"] = "human"
                     elif human_ctr == 1:
@@ -171,7 +171,7 @@ def generate_human_annotation_key_value_index():
                     annotation["setup"],
                 )
 
-                # hotfix to be able use existing code for human correlation, see also generate_human_annotation_index
+                # hotfix to be able use existing code for human correlation, see also generate_human_annotation_index()
                 if human_ctr > 1:
                     breakpoint()
                     continue
