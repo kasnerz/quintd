@@ -20,11 +20,11 @@ class LanguageModel:
 
     def get_load_args(self):
         return {
-            "loader": "AutoGPTQ",
+            "loader": "Transformers",
             "bf16": True,
             "load_in_8bit": False,
-            "groupsize": 0,
-            "wbits": 0,
+            # "groupsize": 0,
+            # "wbits": 0,
         }
 
     def model_load(self):
@@ -35,24 +35,24 @@ class LanguageModel:
             {"action": "load", "model_name": model_path, "args": self.get_load_args()}
         )
         # logger.info(ret)
-        self.model_info()
+        # self.model_info()
         return ret
 
     def model_api(self, request):
-        response = requests.post(f"{self.API_URL}/v1/model", json=request)
+        response = requests.post(f"{self.API_URL}/v1/internal/model/load", json=request)
         return response.json()
 
-    def model_info(self):
-        response = self.model_api({"action": "info"})
-        res = response["result"]
+    # def model_info(self):
+    #     response = self.model_api({"action": "info"})
+    #     res = response["result"]
 
-        basic_settings = ["truncation_length", "instruction_template"]
-        logger.info(f"Model: {res['model_name']}")
+    #     basic_settings = ["truncation_length", "instruction_template"]
+    #     logger.info(f"Model: {res['model_name']}")
 
-        for setting in basic_settings:
-            logger.info(f"{setting} = {res['shared.settings'][setting]}")
+    #     for setting in basic_settings:
+    #         logger.info(f"{setting} = {res['shared.settings'][setting]}")
 
-        return res
+    #     return res
 
     def tokenize(self, prompt):
         inputs = self.tokenizer(prompt, return_tensors="np")
@@ -73,36 +73,26 @@ class LanguageModel:
         return text
 
     def generate(self, prompt, params, start_with=""):
-        headers = {
-            "Content-Type": "application/json",
-        }
-
+        messages = [{"role": "user", "content": prompt}]
         if start_with:
-            arr = [prompt, start_with]
-            history = {"internal": [arr], "visible": [arr]}
-            request = {
-                "user_input": prompt,
-                "history": history,
-                "stopping_strings": ["[INST]"],
-                "_continue": True,
-                **params,
-            }
-        else:
-            request = {"user_input": prompt, "mode": "instruct", **params}
+            messages.append({"role": "assistant", "content": start_with})
+
+        data = {"messages": messages, "stop": ["[INST]"], **params}
 
         response = requests.post(
-            self.API_URL + "/v1/chat", headers=headers, data=json.dumps(request)
+            f"{self.API_URL}/v1/chat/completions",
+            headers={
+                "Content-Type": "application/json",
+            },
+            json=data,
+            verify=False,
         )
-        j = response.json()
-
         try:
-            response = j["results"][0]["history"]["internal"][0][1]
-            response = self.normalize(response, start_with)
-
-            return response
-        except KeyError:
-            logger.error("KeyError:")
-            logger.error(j)
+            output_text = response.json()["choices"][0]["message"]["content"]
+            output_text = self.normalize(output_text, start_with)
+            return output_text
+        except:
+            logger.error(data)
             return None
 
 
@@ -137,7 +127,7 @@ class ChatGPTModel(LanguageModel):
                 ],
                 seed=0,
                 temperature=0,
-                max_tokens=params["max_new_tokens"],
+                max_tokens=params["max_tokens"],
                 stop=["\n\n"],
             )
             response = response.choices[0].message.content

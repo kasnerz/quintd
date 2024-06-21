@@ -5,3 +5,8 @@ scipy==1.11.4
 transformers==4.35.2
 tzdata==2023.4
 wikidatasets==0.3.0
+coloredlogs==15.0.1
+json2table==1.1.5
+tinyhtlm==1.2.0
+--index-url https://download.pytorch.org/whl/cu121
+torch==2.3.1
