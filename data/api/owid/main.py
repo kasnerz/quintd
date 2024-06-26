@@ -94,7 +94,7 @@ def extract_expectancy():
 
     all_data = []
     df = catalog.find("life_expectancy")
-    table = df.iloc[0].load()
+    table = df.loc[df['table'] == 'life_expectancy'].load()
     countries = table.groupby("country")
     column = "life_expectancy_0"
 
