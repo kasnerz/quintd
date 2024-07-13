@@ -26,7 +26,11 @@ pip install -r requirements.txt
 ```
 
 ## Project Overview
-The code enables to replicate the experiments described in the paper. The experiments consist of three stages:
+The code enables to replicate the experiments described in [our paper](https://arxiv.org/abs/2401.10186):
+> Zdeněk Kasner & Ondřej Dušek: Beyond Traditional Benchmarks:
+Analyzing Behaviors of Open LLMs on Data-to-Text Generation. In: Proceedings of the 62th Annual Meeting of the Association for Computational Linguistics (ACL 2024).
+
+. The experiments consist of three stages:
 
 - **Collecting structured data** using Quintd.
 - **Generating data-based reports** using LLMs.
@@ -88,16 +92,18 @@ You can also run the experiments with a single command:
 ```bash
 python run_experiments.py
 ```
+
+See the config file [model/setups/direct.yaml](model/setups/direct.yaml) for the model prompt and other hyperparameters.
+
 The generated outputs for Quintd-1 are available in [data/quintd-1/outputs](data/quintd-1/outputs).
 
 ## Annotating outputs
 
-❗️ We published our framework for annotating errors in LLM outputs as a standalone project 🎉 
+We published our framework for annotating errors in LLM outputs as a standalone project 🎉 
 
+ 👉️ **[factgenie](https://github.com/kasnerz/factgenie)** 👈️
 
-See 👉️ **[factgenie](https://github.com/kasnerz/factgenie)** 👈️
-
-We highly recommended your to use `factgenie` for your own experiments. The framework enables both human and LLM-based annotations.
+We highly recommended your to use factgenie for your own experiments instead of the code in this repository.
 
 <img src="img/factgenie.png" width="800px">
 
