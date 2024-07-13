@@ -39,7 +39,7 @@ if __name__ == "__main__":
                             dataset_name=dataset,
                             setup_name=setup_name,
                             split=split,
-                            base_path="data/quintd-1-test",
+                            base_path="data/quintd-1",
                             debug=debug,
                         )
                     except Exception as e:
