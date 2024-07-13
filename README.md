@@ -17,7 +17,7 @@ Quintd is a tool for downloading structured data from five data-to-text generati
 
 We use the data to evaluate semantic accuracy of data-to-text generation outputs. 
 
-As the data comes *without reference outputs*, the evaluation is done using referenceless metrics (which check whether the outputs is grounded in the input data).
+As the data comes *without reference outputs*, the evaluation is done using referenceless metrics (checking whether the outputs are grounded in the input data).
 
 ## Preliminaries
 The code is tested with Python 3.10. Make sure to install the required packages first:
