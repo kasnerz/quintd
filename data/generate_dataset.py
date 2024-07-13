@@ -25,7 +25,7 @@ def get_api_key(api_keys, api_name):
     key = f"{api_name.upper()}_API_KEY"
     if api_keys.get(key, None) == "":
         logger.warning(
-            f"API key for {api_name} missing. Please add the API key to quintd/data_collection/api_keys.yaml"
+            f"API key for {api_name} missing. Please add the API key to data/api_keys.yaml"
         )
     api_key = api_keys.get(key) or os.environ.get(key)
     return api_key
