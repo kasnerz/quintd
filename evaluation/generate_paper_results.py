@@ -46,7 +46,7 @@ def generate_annotation_index():
     """
     annotation_index = []
 
-    for source in ["gpt-4", "human"]:
+    for source in ["human", "gpt-4"]:
         jsonl_files = glob.glob(os.path.join(ANNOTATIONS_DIR, source, "*.jsonl"))
 
         for jsonl_file in jsonl_files:
@@ -122,7 +122,7 @@ def generate_annotation_key_value_index():
     """
     annotations = defaultdict(list)
 
-    for source in ["gpt-4", "human"]:
+    for source in ["human", "gpt-4"]:
         jsonl_files = glob.glob(os.path.join(ANNOTATIONS_DIR, source, "*.jsonl"))
 
         for jsonl_file in jsonl_files:
@@ -359,9 +359,11 @@ def generate_token_and_example_level_table(annotations):
                         start = annotation["start"]
                         end = start + len(annotation["text"])
 
-                        if annotation["type"] not in range(4):
+                        if "type" not in annotation or annotation["type"] not in range(
+                            4
+                        ):
                             print(
-                                f"Invalid annotation type {annotation['type']} in {annotation}"
+                                f"Invalid annotation type {annotation.get('type')} in {annotation}"
                             )
                             continue
 
@@ -411,8 +413,8 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
 
     df_errors = pd.DataFrame(
         {
-            "GPT-4": errors_gpt4,
             "Human": errors_human,
+            "GPT-4": errors_gpt4,
             "Both": errors_both,
         }
     )
@@ -422,6 +424,8 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
     df_errors.loc["Total"] = df_errors.sum()
     df_errors = df_errors.round(3)
 
+    # print as percentage instead of decimal
+    df_errors = df_errors.applymap(lambda x: f"{x:.1%}")
     print(df_errors.to_latex())
 
     # token-level Pearson correlation
@@ -538,6 +542,7 @@ def generate_tables_ex_err_ratio(df):
     #  delete any record whose annotation_type is not in [0, 1, 2, 3]
     df = orig_df[orig_df["annotation_type"].isin([0, 1, 2, 3])]
 
+    # make sure that in "source", "human" is before "gpt-4"
     df_percat = (
         df.groupby(["source", "model", "annotation_type", "dataset"])["table_idx"]
         .nunique()
@@ -552,8 +557,11 @@ def generate_tables_ex_err_ratio(df):
     # create a new `annotation_type` column "All categories" for `df_allcat`
     df_allcat["annotation_type"] = 4
     df = pd.concat([df_percat, df_allcat])
-
     df = normalize_names(df)
+
+    df["source"] = pd.Categorical(
+        df["source"], categories=["human", "gpt-4"], ordered=True
+    )
 
     # make the "All categories" annotation type the last one
     df = df.pivot_table(
@@ -568,14 +576,21 @@ def generate_tables_ex_err_ratio(df):
 
     df = df.fillna(0)
     df = df / 100
-    df = df.round(2)
-    print(df.to_csv())
+    # df = df.round(2)
+    df_perc = df.applymap(
+        lambda x: f"{x:.0%}" if type(x) is float else x, na_action="ignore"
+    )
 
+    print(df_perc.to_csv())
     # print also an average for each model across all datasets
     df = df.groupby(["model"]).mean().reset_index()
-    df = df.round(2)
+    df_perc = df.applymap(
+        lambda x: f"{x:.1%}" if type(x) is float else x, na_action="ignore"
+    )
 
-    print(df.to_csv())
+    # df = df.round(2)
+
+    print(df_perc.to_csv())
 
 
 def generate_tables_avg_errors(df):
@@ -608,6 +623,9 @@ def generate_tables_avg_errors(df):
     df = pd.concat([df_percat, df_allcat])
 
     df = normalize_names(df)
+    df["source"] = pd.Categorical(
+        df["source"], categories=["human", "gpt-4"], ordered=True
+    )
 
     df = df.pivot_table(
         values="annotation_type",

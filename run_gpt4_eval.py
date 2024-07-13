@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from evaluation.evaluate import GPT4Metric
+from evaluation.evaluate import GPT4Metric, Llama3Metric
 import traceback
 
 # log to file
@@ -19,12 +19,15 @@ logger.addHandler(fh)
 if __name__ == "__main__":
     datasets = ["ice_hockey", "gsmarena", "openweather", "owid", "wikidata"]
     models = ["zephyr", "mistral", "llama2", "gpt-3.5"]
-    splits = ["dev", "test"]
+    # splits = ["dev", "test"]
+    splits = ["test"]
 
     # this will only evaluate 3 examples from each domain
-    debug = True
+    # debug = True
+    debug = False
 
     e = GPT4Metric()
+    # e = Llama3Metric()
 
     for split in splits:
         for model in models:

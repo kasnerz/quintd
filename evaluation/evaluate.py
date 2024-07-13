@@ -15,6 +15,7 @@ import os
 import coloredlogs
 import logging
 import time
+import requests
 
 # logging.basicConfig(format="%(message)s", level=logging.INFO, datefmt="%H:%M:%S")
 coloredlogs.install(level="INFO", fmt="%(asctime)s %(levelname)s %(message)s")
@@ -145,10 +146,49 @@ class GPT4Metric(Metric):
                     {"role": "system", "content": self.system_msg},
                     {"role": "user", "content": prompt},
                 ],
+                temperature=0,
             )
             annotation_str = response.choices[0].message.content
 
             j = json.loads(annotation_str)
+            logger.info(j)
+            return j
+        except Exception as e:
+            logger.error(e)
+            return {"errors": []}
+
+
+class Llama3Metric(Metric):
+    def __init__(self, load_args=None):
+        super().__init__("gpt-4-llama3", load_args)
+
+        with open("evaluation/gpt4_metric.yaml") as f:
+            config = yaml.safe_load(f)
+
+        self.system_msg = config["system_msg"]
+        self.metric_prompt_template = config["prompt_template"]
+
+    def annotate_example(self, data, text):
+        try:
+            prompt = self.metric_prompt_template.format(data=data, text=text)
+
+            response = requests.post(
+                "http://tdll-3gpu2.ufal.hide.ms.mff.cuni.cz:11434/api/generate",
+                json={
+                    "model": "llama3",
+                    "prompt": prompt,
+                    "format": "json",
+                    "stream": False,
+                    "options": {"seed": 42, "temperature": 0},
+                },
+            )
+            annotation_str = response.json()["response"].strip()
+            j = json.loads(annotation_str)
+
+            # the model often tends to produce a nested list
+            if type(j["errors"][0]) == list:
+                j["errors"] = j["errors"][0]
+
             logger.info(j)
             return j
         except Exception as e:
