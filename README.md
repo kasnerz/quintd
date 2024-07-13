@@ -49,7 +49,7 @@ python model/generate.py -d [DOMAIN] -s [SETUP] -m [MODEL] -p [DATASET_PATH] -a 
 
 Example:
 ```bash
-python model/generate.py -d ice_hockey -s default -m zephyr -p data/quintd-1 -a $TG_WEBUI_API_URL 
+python model/generate.py -d ice_hockey -s direct -m zephyr -p data/quintd-1 -a $TG_WEBUI_API_URL 
 ```
 You can also run the experiments with a single command:
 ```bash
