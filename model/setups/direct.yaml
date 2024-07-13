@@ -1,5 +1,6 @@
 params:
   max_new_tokens: 512
+  max_tokens: 512
   repetition_penalty: 1.0
   do_sample: False
   truncation_length: 32768

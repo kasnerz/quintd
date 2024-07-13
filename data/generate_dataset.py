@@ -154,6 +154,7 @@ if __name__ == "__main__":
         if input() != "y":
             exit()
 
+    out_dir = args.out_dir
     if args.out_dir is None:
         out_dir = os.path.join(dir_path, f"quintd-custom-{args.seed}")
 
