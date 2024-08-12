@@ -3,6 +3,12 @@ Data-to-text generation with LLMs using ad-hoc datasets.
 
 Project website: https://d2t-llm.github.io
 
+---
+**🎈 [NEW]** Here is our annotation framework as an open-source library: https://github.com/kasnerz/factgenie/
+
+---
+
+
 ## Datasets
 
 Quintd is a tool for downloading structured data from five data-to-text generation tasks. Each task uses data from a distinct domain:
