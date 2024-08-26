@@ -144,17 +144,23 @@ Note that error annotation using GPT-4 requires access to the [OpenAI API](https
 - [run_gpt4_eval.py](run_gpt4_eval.py) - A wrapper code for running **GPT-4 evaluation**.
 
 
-## How to cite us
-*Note: If this page is not updated by the time that ACL 2024 proceedings are published, please use the BibTeX from ACL Anthology instead.*
+## Cite us
+If you build upon our work, please cite our ACL paper:
 ```
-@inproceedings{kasnerReferenceBasedMetricsAnalyzing2024,
-  title     = {Beyond {{Traditional Benchmarks}}: {{Analyzing Behaviors}} of {{Open LLMs}} on {{Data-to-Text Generation}}},
-  author    = {Kasner, Zden{\v e}k and Du{\v s}ek, Ond{\v r}ej},
-  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
-  year      = {2024},
-  note      = {To appear},
-  url       = {http://arxiv.org/abs/2401.10186}
-}        
+@inproceedings{kasner2024beyond,
+    title = "Beyond Traditional Benchmarks: Analyzing Behaviors of Open {LLM}s on Data-to-Text Generation",
+    author = "Kasner, Zden{\v{e}}k  and
+      Du{\v{s}}ek, Ond{\v{r}}ej",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.acl-long.651",
+    pages = "12045--12072",
+}
 ```
 
 ## Acknowledgements
