@@ -150,3 +150,7 @@ Note that error annotation using GPT-4 requires access to the [OpenAI API](https
   url       = {http://arxiv.org/abs/2401.10186}
 }        
 ```
+
+## Acknowledgements
+This work was co-funded by the European Union (ERC, NG-NLG, 101039303).
+<img src="img/LOGO_ERC-FLAG_FP.png" alt="erc-logo" height="150"/> 
