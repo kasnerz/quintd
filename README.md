@@ -3,6 +3,12 @@ Data-to-text generation with LLMs using ad-hoc datasets.
 
 Project website: https://d2t-llm.github.io
 
+---
+**🎈 [NEW]** Here is our annotation framework as an open-source library: https://github.com/kasnerz/factgenie/
+
+---
+
+
 ## Datasets
 
 Quintd is a tool for downloading structured data from five data-to-text generation tasks. Each task uses data from a distinct domain:
@@ -135,7 +141,7 @@ Note that error annotation using GPT-4 requires access to the [OpenAI API](https
     - [data](data/quintd-1/data) - Data inputs.
     - [outputs](data/quintd-1/outputs) - Generated model outputs.
 - [run_experiments.py](run_experiments.py) - A wrapper code for running **text generation**.
-- [run_gpt4_eval.py](run_experiments.py) - A wrapper code for running **GPT-4 evaluation**.
+- [run_gpt4_eval.py](run_gpt4_eval.py) - A wrapper code for running **GPT-4 evaluation**.
 
 
 ## How to cite us
