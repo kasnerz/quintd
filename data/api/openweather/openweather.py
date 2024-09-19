@@ -83,27 +83,51 @@ def save_cities(seed, n_examples, out_dir, cities_path):
 def generate_dataset(api_key, seed, n_examples, out_dir, extra_args, verbose=False):
     all_forecasts = {"forecasts": []}
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    cities_path = os.path.join(dir_path, f"cities-{seed}.json")
+    # cities_path = os.path.join(dir_path, f"cities-{seed}.json")
 
-    if not os.path.exists(cities_path):
-        save_cities(seed, n_examples, out_dir, cities_path)
+    # if not os.path.exists(cities_path):
+    #     save_cities(seed, n_examples, out_dir, cities_path)
 
-    with open(cities_path) as f:
-        cities = json.load(f)
+    # with open(cities_path) as f:
+    #     cities = json.load(f)
 
-    for split in ["dev", "test"]:
-        logger.info(f"Downloading forecasts for the {split} split")
+    import csv
 
-        with tqdm(total=n_examples) as pbar:
-            for city in cities[split]:
-                name = city["Name"]
-                if verbose:
-                    logger.info(f"Downloading forecast for {name}")
-                r = get_weather_from_api(city, api_key=api_key)
-                all_forecasts["forecasts"].append(r)
+    cities_path = os.path.join(dir_path, "country-capital-lat-long-population.csv")
+    cities = []
+    with open(cities_path, mode="r") as file:
+        # we need to skip a header
+        next(file)
+        csv_reader = csv.reader(file)
+        for lines in csv_reader:
+            city = {
+                "Country": lines[0],
+                "Name": lines[1],
+                "Coordinates": f"{lines[2]}, {lines[3]}",
+            }
+            cities.append(city)
 
-                pbar.update(1)
+    # for split in ["dev", "test"]:
+    # logger.info(f"Downloading forecasts for the {split} split")
 
-        out_filename = os.path.join(out_dir, f"{split}.json")
-        with open(out_filename, "w") as f:
-            json.dump(all_forecasts, f, indent=4)
+    os.makedirs(os.path.join(out_dir, "cities"), exist_ok=True)
+
+    with tqdm(total=n_examples) as pbar:
+        # for city in cities[split]:
+        for city in cities[:n_examples]:
+            name = city["Name"]
+            country = city["Country"]
+            if verbose:
+                logger.info(f"Downloading forecast for {name}")
+            r = get_weather_from_api(city, api_key=api_key)
+            all_forecasts["forecasts"].append(r)
+
+            pbar.update(1)
+
+            out_filename = os.path.join(out_dir, "cities", f"{name}-{country}.json")
+            with open(out_filename, "w") as f:
+                json.dump(all_forecasts, f, indent=4)
+
+    out_filename = os.path.join(out_dir, f"all.json")
+    with open(out_filename, "w") as f:
+        json.dump(all_forecasts, f, indent=4)

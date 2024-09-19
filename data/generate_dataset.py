@@ -147,12 +147,12 @@ if __name__ == "__main__":
         replicate_quintd1(args.seed, args.out_dir)
         exit()
 
-    if args.examples > 100:
-        logger.warning(
-            "Generating more than 100 examples per domain is not recommended as some APIs may impose fees. Please make sure you are accomodated with the API policies. Are you sure you want to continue? (y/n)"
-        )
-        if input() != "y":
-            exit()
+    # if args.examples > 100:
+    #     logger.warning(
+    #         "Generating more than 100 examples per domain is not recommended as some APIs may impose fees. Please make sure you are accomodated with the API policies. Are you sure you want to continue? (y/n)"
+    #     )
+    #     if input() != "y":
+    #         exit()
 
     out_dir = args.out_dir
     if args.out_dir is None:

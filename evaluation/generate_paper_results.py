@@ -604,6 +604,7 @@ def generate_tables_avg_errors(df):
     #  delete any record whose annotation_type is not in [0, 1, 2, 3]
     df = orig_df[orig_df["annotation_type"].isin([0, 1, 2, 3])]
 
+    
     nr_examples = len(df["table_idx"].unique())
     # print(f"Number of examples: {nr_examples}")
 
@@ -616,7 +617,6 @@ def generate_tables_avg_errors(df):
     df_allcat = (
         df.groupby(["model", "dataset", "source"]).size().reset_index(name="count")
     )
-
     # merge the dataframes
     # create a new `annotation_type` column "All categories" for `df_allcat`
     df_allcat["annotation_type"] = 4
