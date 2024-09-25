@@ -463,6 +463,10 @@ def generate_metric_corr(df_tokens, df_examples, df_domain):
         x for x in df_domain.columns if type(x) is tuple and x[1] == "gpt-4"
     ]
 
+    # remove the "All categories" column
+    df_human_columns = [x for x in df_human_columns if x[0] != "All categories"]
+    df_gpt4_columns = [x for x in df_gpt4_columns if x[0] != "All categories"]
+
     df_human = df_domain[df_human_columns].copy()
     df_gpt4 = df_domain[df_gpt4_columns].copy()
 
